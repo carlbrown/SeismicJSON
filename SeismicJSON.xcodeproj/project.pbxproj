@@ -130,6 +130,7 @@
 		D3E420BD15E41D97000C88B1 /* SeismicJSON */ = {
 			isa = PBXGroup;
 			children = (
+				D3E420FE15E420A5000C88B1 /* Models */,
 				D3E420C615E41D97000C88B1 /* AppDelegate.h */,
 				D3E420C715E41D97000C88B1 /* AppDelegate.m */,
 				D3E420CC15E41D97000C88B1 /* MasterViewController.h */,
@@ -140,7 +141,6 @@
 				D3E420D515E41D97000C88B1 /* MasterViewController_iPad.xib */,
 				D3E420D815E41D97000C88B1 /* DetailViewController_iPhone.xib */,
 				D3E420DB15E41D97000C88B1 /* DetailViewController_iPad.xib */,
-				D3E420C915E41D97000C88B1 /* SeismicJSON.xcdatamodeld */,
 				D3E420BE15E41D97000C88B1 /* Supporting Files */,
 				D3E420FC15E41EFE000C88B1 /* README.md */,
 			);
@@ -175,6 +175,14 @@
 				D3E420EE15E41D97000C88B1 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D3E420FE15E420A5000C88B1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D3E420C915E41D97000C88B1 /* SeismicJSON.xcdatamodeld */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
