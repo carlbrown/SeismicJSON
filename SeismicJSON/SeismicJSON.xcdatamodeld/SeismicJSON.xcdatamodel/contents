@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1480" systemVersion="12A269" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Earthquake" syncable="YES">
+    <entity name="Earthquake" representedClassName="Earthquake" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
@@ -9,6 +9,6 @@
         <attribute name="webLinkToUSGS" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Earthquake" positionX="160" positionY="192" width="128" height="135"/>
+        <element name="Earthquake" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>
