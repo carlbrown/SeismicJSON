@@ -1,0 +1,512 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D3E420B615E41D97000C88B1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E420B515E41D97000C88B1 /* UIKit.framework */; };
+		D3E420B815E41D97000C88B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E420B715E41D97000C88B1 /* Foundation.framework */; };
+		D3E420BA15E41D97000C88B1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E420B915E41D97000C88B1 /* CoreGraphics.framework */; };
+		D3E420BC15E41D97000C88B1 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E420BB15E41D97000C88B1 /* CoreData.framework */; };
+		D3E420C215E41D97000C88B1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D3E420C015E41D97000C88B1 /* InfoPlist.strings */; };
+		D3E420C415E41D97000C88B1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E420C315E41D97000C88B1 /* main.m */; };
+		D3E420C815E41D97000C88B1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E420C715E41D97000C88B1 /* AppDelegate.m */; };
+		D3E420CB15E41D97000C88B1 /* SeismicJSON.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D3E420C915E41D97000C88B1 /* SeismicJSON.xcdatamodeld */; };
+		D3E420CE15E41D97000C88B1 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E420CD15E41D97000C88B1 /* MasterViewController.m */; };
+		D3E420D115E41D97000C88B1 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E420D015E41D97000C88B1 /* DetailViewController.m */; };
+		D3E420D415E41D97000C88B1 /* MasterViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3E420D215E41D97000C88B1 /* MasterViewController_iPhone.xib */; };
+		D3E420D715E41D97000C88B1 /* MasterViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3E420D515E41D97000C88B1 /* MasterViewController_iPad.xib */; };
+		D3E420DA15E41D97000C88B1 /* DetailViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3E420D815E41D97000C88B1 /* DetailViewController_iPhone.xib */; };
+		D3E420DD15E41D97000C88B1 /* DetailViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3E420DB15E41D97000C88B1 /* DetailViewController_iPad.xib */; };
+		D3E420E515E41D97000C88B1 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E420E415E41D97000C88B1 /* SenTestingKit.framework */; };
+		D3E420E615E41D97000C88B1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E420B515E41D97000C88B1 /* UIKit.framework */; };
+		D3E420E715E41D97000C88B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E420B715E41D97000C88B1 /* Foundation.framework */; };
+		D3E420E815E41D97000C88B1 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E420BB15E41D97000C88B1 /* CoreData.framework */; };
+		D3E420F015E41D97000C88B1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D3E420EE15E41D97000C88B1 /* InfoPlist.strings */; };
+		D3E420F315E41D97000C88B1 /* SeismicJSONTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E420F215E41D97000C88B1 /* SeismicJSONTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D3E420E915E41D97000C88B1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D3E420A815E41D97000C88B1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D3E420B015E41D97000C88B1;
+			remoteInfo = SeismicJSON;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D3E420B115E41D97000C88B1 /* SeismicJSON.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeismicJSON.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3E420B515E41D97000C88B1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		D3E420B715E41D97000C88B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D3E420B915E41D97000C88B1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		D3E420BB15E41D97000C88B1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		D3E420BF15E41D97000C88B1 /* SeismicJSON-Info.plist */ = {isa = PBXFileReference; path = "SeismicJSON-Info.plist"; sourceTree = "<group>"; };
+		D3E420C115E41D97000C88B1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D3E420C315E41D97000C88B1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D3E420C515E41D97000C88B1 /* SeismicJSON-Prefix.pch */ = {isa = PBXFileReference; path = "SeismicJSON-Prefix.pch"; sourceTree = "<group>"; };
+		D3E420C615E41D97000C88B1 /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		D3E420C715E41D97000C88B1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		D3E420CA15E41D97000C88B1 /* SeismicJSON.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SeismicJSON.xcdatamodel; sourceTree = "<group>"; };
+		D3E420CC15E41D97000C88B1 /* MasterViewController.h */ = {isa = PBXFileReference; path = MasterViewController.h; sourceTree = "<group>"; };
+		D3E420CD15E41D97000C88B1 /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
+		D3E420CF15E41D97000C88B1 /* DetailViewController.h */ = {isa = PBXFileReference; path = DetailViewController.h; sourceTree = "<group>"; };
+		D3E420D015E41D97000C88B1 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		D3E420D315E41D97000C88B1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MasterViewController_iPhone.xib; sourceTree = "<group>"; };
+		D3E420D615E41D97000C88B1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MasterViewController_iPad.xib; sourceTree = "<group>"; };
+		D3E420D915E41D97000C88B1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DetailViewController_iPhone.xib; sourceTree = "<group>"; };
+		D3E420DC15E41D97000C88B1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DetailViewController_iPad.xib; sourceTree = "<group>"; };
+		D3E420E315E41D97000C88B1 /* SeismicJSONTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SeismicJSONTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3E420E415E41D97000C88B1 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		D3E420ED15E41D97000C88B1 /* SeismicJSONTests-Info.plist */ = {isa = PBXFileReference; path = "SeismicJSONTests-Info.plist"; sourceTree = "<group>"; };
+		D3E420EF15E41D97000C88B1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D3E420F115E41D97000C88B1 /* SeismicJSONTests.h */ = {isa = PBXFileReference; path = SeismicJSONTests.h; sourceTree = "<group>"; };
+		D3E420F215E41D97000C88B1 /* SeismicJSONTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SeismicJSONTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D3E420AE15E41D97000C88B1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3E420B615E41D97000C88B1 /* UIKit.framework in Frameworks */,
+				D3E420B815E41D97000C88B1 /* Foundation.framework in Frameworks */,
+				D3E420BA15E41D97000C88B1 /* CoreGraphics.framework in Frameworks */,
+				D3E420BC15E41D97000C88B1 /* CoreData.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3E420DF15E41D97000C88B1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3E420E515E41D97000C88B1 /* SenTestingKit.framework in Frameworks */,
+				D3E420E615E41D97000C88B1 /* UIKit.framework in Frameworks */,
+				D3E420E715E41D97000C88B1 /* Foundation.framework in Frameworks */,
+				D3E420E815E41D97000C88B1 /* CoreData.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D3E420A615E41D97000C88B1 = {
+			isa = PBXGroup;
+			children = (
+				D3E420BD15E41D97000C88B1 /* SeismicJSON */,
+				D3E420EB15E41D97000C88B1 /* SeismicJSONTests */,
+				D3E420B415E41D97000C88B1 /* Frameworks */,
+				D3E420B215E41D97000C88B1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D3E420B215E41D97000C88B1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D3E420B115E41D97000C88B1 /* SeismicJSON.app */,
+				D3E420E315E41D97000C88B1 /* SeismicJSONTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D3E420B415E41D97000C88B1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D3E420B515E41D97000C88B1 /* UIKit.framework */,
+				D3E420B715E41D97000C88B1 /* Foundation.framework */,
+				D3E420B915E41D97000C88B1 /* CoreGraphics.framework */,
+				D3E420BB15E41D97000C88B1 /* CoreData.framework */,
+				D3E420E415E41D97000C88B1 /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D3E420BD15E41D97000C88B1 /* SeismicJSON */ = {
+			isa = PBXGroup;
+			children = (
+				D3E420C615E41D97000C88B1 /* AppDelegate.h */,
+				D3E420C715E41D97000C88B1 /* AppDelegate.m */,
+				D3E420CC15E41D97000C88B1 /* MasterViewController.h */,
+				D3E420CD15E41D97000C88B1 /* MasterViewController.m */,
+				D3E420CF15E41D97000C88B1 /* DetailViewController.h */,
+				D3E420D015E41D97000C88B1 /* DetailViewController.m */,
+				D3E420D215E41D97000C88B1 /* MasterViewController_iPhone.xib */,
+				D3E420D515E41D97000C88B1 /* MasterViewController_iPad.xib */,
+				D3E420D815E41D97000C88B1 /* DetailViewController_iPhone.xib */,
+				D3E420DB15E41D97000C88B1 /* DetailViewController_iPad.xib */,
+				D3E420C915E41D97000C88B1 /* SeismicJSON.xcdatamodeld */,
+				D3E420BE15E41D97000C88B1 /* Supporting Files */,
+			);
+			path = SeismicJSON;
+			sourceTree = "<group>";
+		};
+		D3E420BE15E41D97000C88B1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D3E420BF15E41D97000C88B1 /* SeismicJSON-Info.plist */,
+				D3E420C015E41D97000C88B1 /* InfoPlist.strings */,
+				D3E420C315E41D97000C88B1 /* main.m */,
+				D3E420C515E41D97000C88B1 /* SeismicJSON-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D3E420EB15E41D97000C88B1 /* SeismicJSONTests */ = {
+			isa = PBXGroup;
+			children = (
+				D3E420F115E41D97000C88B1 /* SeismicJSONTests.h */,
+				D3E420F215E41D97000C88B1 /* SeismicJSONTests.m */,
+				D3E420EC15E41D97000C88B1 /* Supporting Files */,
+			);
+			path = SeismicJSONTests;
+			sourceTree = "<group>";
+		};
+		D3E420EC15E41D97000C88B1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D3E420ED15E41D97000C88B1 /* SeismicJSONTests-Info.plist */,
+				D3E420EE15E41D97000C88B1 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D3E420B015E41D97000C88B1 /* SeismicJSON */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D3E420F615E41D97000C88B1 /* Build configuration list for PBXNativeTarget "SeismicJSON" */;
+			buildPhases = (
+				D3E420AD15E41D97000C88B1 /* Sources */,
+				D3E420AE15E41D97000C88B1 /* Frameworks */,
+				D3E420AF15E41D97000C88B1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SeismicJSON;
+			productName = SeismicJSON;
+			productReference = D3E420B115E41D97000C88B1 /* SeismicJSON.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D3E420E215E41D97000C88B1 /* SeismicJSONTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D3E420F915E41D97000C88B1 /* Build configuration list for PBXNativeTarget "SeismicJSONTests" */;
+			buildPhases = (
+				D3E420DE15E41D97000C88B1 /* Sources */,
+				D3E420DF15E41D97000C88B1 /* Frameworks */,
+				D3E420E015E41D97000C88B1 /* Resources */,
+				D3E420E115E41D97000C88B1 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D3E420EA15E41D97000C88B1 /* PBXTargetDependency */,
+			);
+			name = SeismicJSONTests;
+			productName = SeismicJSONTests;
+			productReference = D3E420E315E41D97000C88B1 /* SeismicJSONTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D3E420A815E41D97000C88B1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = PDAgent;
+			};
+			buildConfigurationList = D3E420AB15E41D97000C88B1 /* Build configuration list for PBXProject "SeismicJSON" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = D3E420A615E41D97000C88B1;
+			productRefGroup = D3E420B215E41D97000C88B1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D3E420B015E41D97000C88B1 /* SeismicJSON */,
+				D3E420E215E41D97000C88B1 /* SeismicJSONTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D3E420AF15E41D97000C88B1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3E420C215E41D97000C88B1 /* InfoPlist.strings in Resources */,
+				D3E420D415E41D97000C88B1 /* MasterViewController_iPhone.xib in Resources */,
+				D3E420D715E41D97000C88B1 /* MasterViewController_iPad.xib in Resources */,
+				D3E420DA15E41D97000C88B1 /* DetailViewController_iPhone.xib in Resources */,
+				D3E420DD15E41D97000C88B1 /* DetailViewController_iPad.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3E420E015E41D97000C88B1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3E420F015E41D97000C88B1 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D3E420E115E41D97000C88B1 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D3E420AD15E41D97000C88B1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3E420C415E41D97000C88B1 /* main.m in Sources */,
+				D3E420C815E41D97000C88B1 /* AppDelegate.m in Sources */,
+				D3E420CB15E41D97000C88B1 /* SeismicJSON.xcdatamodeld in Sources */,
+				D3E420CE15E41D97000C88B1 /* MasterViewController.m in Sources */,
+				D3E420D115E41D97000C88B1 /* DetailViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3E420DE15E41D97000C88B1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3E420F315E41D97000C88B1 /* SeismicJSONTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D3E420EA15E41D97000C88B1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D3E420B015E41D97000C88B1 /* SeismicJSON */;
+			targetProxy = D3E420E915E41D97000C88B1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D3E420C015E41D97000C88B1 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D3E420C115E41D97000C88B1 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		D3E420D215E41D97000C88B1 /* MasterViewController_iPhone.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D3E420D315E41D97000C88B1 /* en */,
+			);
+			name = MasterViewController_iPhone.xib;
+			sourceTree = "<group>";
+		};
+		D3E420D515E41D97000C88B1 /* MasterViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D3E420D615E41D97000C88B1 /* en */,
+			);
+			name = MasterViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+		D3E420D815E41D97000C88B1 /* DetailViewController_iPhone.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D3E420D915E41D97000C88B1 /* en */,
+			);
+			name = DetailViewController_iPhone.xib;
+			sourceTree = "<group>";
+		};
+		D3E420DB15E41D97000C88B1 /* DetailViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D3E420DC15E41D97000C88B1 /* en */,
+			);
+			name = DetailViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+		D3E420EE15E41D97000C88B1 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D3E420EF15E41D97000C88B1 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D3E420F415E41D97000C88B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D3E420F515E41D97000C88B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D3E420F715E41D97000C88B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SeismicJSON/SeismicJSON-Prefix.pch";
+				INFOPLIST_FILE = "SeismicJSON/SeismicJSON-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		D3E420F815E41D97000C88B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SeismicJSON/SeismicJSON-Prefix.pch";
+				INFOPLIST_FILE = "SeismicJSON/SeismicJSON-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		D3E420FA15E41D97000C88B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SeismicJSON.app/SeismicJSON";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SeismicJSON/SeismicJSON-Prefix.pch";
+				INFOPLIST_FILE = "SeismicJSONTests/SeismicJSONTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		D3E420FB15E41D97000C88B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SeismicJSON.app/SeismicJSON";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SeismicJSON/SeismicJSON-Prefix.pch";
+				INFOPLIST_FILE = "SeismicJSONTests/SeismicJSONTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D3E420AB15E41D97000C88B1 /* Build configuration list for PBXProject "SeismicJSON" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D3E420F415E41D97000C88B1 /* Debug */,
+				D3E420F515E41D97000C88B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D3E420F615E41D97000C88B1 /* Build configuration list for PBXNativeTarget "SeismicJSON" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D3E420F715E41D97000C88B1 /* Debug */,
+				D3E420F815E41D97000C88B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		D3E420F915E41D97000C88B1 /* Build configuration list for PBXNativeTarget "SeismicJSONTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D3E420FA15E41D97000C88B1 /* Debug */,
+				D3E420FB15E41D97000C88B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		D3E420C915E41D97000C88B1 /* SeismicJSON.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D3E420CA15E41D97000C88B1 /* SeismicJSON.xcdatamodel */,
+			);
+			currentVersion = D3E420CA15E41D97000C88B1 /* SeismicJSON.xcdatamodel */;
+			path = SeismicJSON.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = D3E420A815E41D97000C88B1 /* Project object */;
+}
