@@ -27,6 +27,7 @@
 		D3E420E815E41D97000C88B1 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E420BB15E41D97000C88B1 /* CoreData.framework */; };
 		D3E420F015E41D97000C88B1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D3E420EE15E41D97000C88B1 /* InfoPlist.strings */; };
 		D3E420F315E41D97000C88B1 /* SeismicJSONTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E420F215E41D97000C88B1 /* SeismicJSONTests.m */; };
+		D3E420FD15E41EFE000C88B1 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D3E420FC15E41EFE000C88B1 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		D3E420EF15E41D97000C88B1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D3E420F115E41D97000C88B1 /* SeismicJSONTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SeismicJSONTests.h; sourceTree = "<group>"; };
 		D3E420F215E41D97000C88B1 /* SeismicJSONTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SeismicJSONTests.m; sourceTree = "<group>"; };
+		D3E420FC15E41EFE000C88B1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 				D3E420DB15E41D97000C88B1 /* DetailViewController_iPad.xib */,
 				D3E420C915E41D97000C88B1 /* SeismicJSON.xcdatamodeld */,
 				D3E420BE15E41D97000C88B1 /* Supporting Files */,
+				D3E420FC15E41EFE000C88B1 /* README.md */,
 			);
 			path = SeismicJSON;
 			sourceTree = "<group>";
@@ -250,6 +253,7 @@
 				D3E420D715E41D97000C88B1 /* MasterViewController_iPad.xib in Resources */,
 				D3E420DA15E41D97000C88B1 /* DetailViewController_iPhone.xib in Resources */,
 				D3E420DD15E41D97000C88B1 /* DetailViewController_iPad.xib in Resources */,
+				D3E420FD15E41EFE000C88B1 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
