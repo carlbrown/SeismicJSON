@@ -11,7 +11,7 @@
 @interface EarthquakeFetchOperation : NSOperation <NSURLConnectionDataDelegate>
 
 @property (nonatomic, strong) NSURL *urlForJSONData;
-@property (nonatomic, weak) NSPersistentStoreCoordinator *storeCoordinator;
+@property (nonatomic, weak) NSManagedObjectContext *mainContext;
 @property (nonatomic, strong) NSMutableData *jsonData;
 @property (nonatomic, assign, getter=isDone) BOOL done;
 @property (nonatomic, assign) NSURLConnection *connection;

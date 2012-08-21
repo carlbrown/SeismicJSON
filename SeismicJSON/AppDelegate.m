@@ -45,15 +45,11 @@
         self.window.rootViewController = self.splitViewController;
         masterViewController.managedObjectContext = self.managedObjectContext;
     }
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(changesSaved:) name:NSManagedObjectContextDidSaveNotification
-                                               object:nil];
-    
+        
     [self setFetchQueue:[[NSOperationQueue alloc] init]];
     EarthquakeFetchOperation *mainEFO = [[EarthquakeFetchOperation alloc] init];
     [mainEFO setUrlForJSONData:[NSURL URLWithString:@"http://earthquake.usgs.gov/earthquakes/feed/geojson/significant/month"]];
-    [mainEFO setStoreCoordinator:self.persistentStoreCoordinator];
+    [mainEFO setMainContext:self.managedObjectContext];
     [self.fetchQueue addOperation:mainEFO];
     
     
@@ -103,17 +99,6 @@
     }
 }
 
-- (void)changesSaved:(NSNotification *)notification {
-    [self performSelectorOnMainThread:@selector(changesSavedOnMainThread:)
-                           withObject:notification waitUntilDone:YES];
-}
-
-- (void)changesSavedOnMainThread:(NSNotification *)notification {
-    if ([notification object] != self.managedObjectContext) {
-        [self.managedObjectContext mergeChangesFromContextDidSaveNotification:notification];
-    }
-}
-
 #pragma mark - Core Data stack
 
 // Returns the managed object context for the application.
@@ -126,7 +111,7 @@
     
     NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
     if (coordinator != nil) {
-        _managedObjectContext = [[NSManagedObjectContext alloc] init];
+        _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
         [_managedObjectContext setPersistentStoreCoordinator:coordinator];
     }
     return _managedObjectContext;

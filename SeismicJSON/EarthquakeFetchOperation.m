@@ -12,7 +12,7 @@
 @implementation EarthquakeFetchOperation
 
 @synthesize urlForJSONData = _urlForJSONData;
-@synthesize storeCoordinator = _storeCoordinator;
+@synthesize mainContext = _mainContext;
 @synthesize jsonData = _jsonData;
 @synthesize done = _done;
 @synthesize connection = _connection;
@@ -26,8 +26,8 @@
         NSLog(@"Cannot start without a URL");
         return;
     }
-    if (!_storeCoordinator) {
-        NSLog(@"Cannot start without a Persistent Store Coordinator");
+    if (!_mainContext) {
+        NSLog(@"Cannot start without a Primary Managed Object Context");
         return;
     }
 
@@ -77,8 +77,9 @@
     
     id objectFromJSON = [NSJSONSerialization JSONObjectWithData:self.jsonData options:0 error:&error];
     if (objectFromJSON) {
-        NSManagedObjectContext *context = [[NSManagedObjectContext alloc] init];
-        [context setPersistentStoreCoordinator:self.storeCoordinator];
+        NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
+        [context setParentContext:[self mainContext]];
+
         
         NSDictionary *jsonDict = (NSDictionary *) objectFromJSON;
         
@@ -105,6 +106,15 @@
                     NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
                     abort();
                 }
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    NSError *error = nil;
+                    if (![self.mainContext save:&error]) {
+                        // Replace this implementation with code to handle the error appropriately.
+                        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
+                        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+                        abort();
+                    }
+                });
                 
             }
         }
