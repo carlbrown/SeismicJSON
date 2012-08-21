@@ -7,6 +7,7 @@
 //
 
 #import "DetailViewController.h"
+#import "Earthquake.h"
 
 @interface DetailViewController ()
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
@@ -16,6 +17,12 @@
 @implementation DetailViewController
 
 #pragma mark - Managing the detail item
+@synthesize magnitudeLabel;
+@synthesize locationLabel;
+@synthesize latitudeLabel;
+@synthesize longitudeLabel;
+@synthesize dateLabel;
+@synthesize urlLabel;
 
 - (void)setDetailItem:(id)newDetailItem
 {
@@ -36,7 +43,12 @@
     // Update the user interface for the detail item.
 
     if (self.detailItem) {
-        self.detailDescriptionLabel.text = [[self.detailItem valueForKey:@"location"] description];
+        [self.dateLabel setText:[NSString stringWithFormat:@"Date: %@",self.detailItem.date]];
+        [self.magnitudeLabel setText:[NSString stringWithFormat:@"Magnitude: %@",self.detailItem.magnitude]];
+        [self.locationLabel setText:[NSString stringWithFormat:@"Location: %@",self.detailItem.location]];
+        [self.latitudeLabel setText:[NSString stringWithFormat:@"Latitude: %@",self.detailItem.latitude]];
+        [self.longitudeLabel setText:[NSString stringWithFormat:@"Longitude: %@",self.detailItem.longitude]];
+        [self.urlLabel setText:[NSString stringWithFormat:@"URL: %@",self.detailItem.webLinkToUSGS]];
     }
 }
 
@@ -87,4 +99,13 @@
     self.masterPopoverController = nil;
 }
 
+- (void)viewDidUnload {
+    [self setMagnitudeLabel:nil];
+    [self setLocationLabel:nil];
+    [self setLatitudeLabel:nil];
+    [self setLongitudeLabel:nil];
+    [self setDateLabel:nil];
+    [self setUrlLabel:nil];
+    [super viewDidUnload];
+}
 @end
