@@ -45,26 +45,26 @@
 		D3E420B715E41D97000C88B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D3E420B915E41D97000C88B1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		D3E420BB15E41D97000C88B1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		D3E420BF15E41D97000C88B1 /* SeismicJSON-Info.plist */ = {isa = PBXFileReference; path = "SeismicJSON-Info.plist"; sourceTree = "<group>"; };
+		D3E420BF15E41D97000C88B1 /* SeismicJSON-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SeismicJSON-Info.plist"; sourceTree = "<group>"; };
 		D3E420C115E41D97000C88B1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		D3E420C315E41D97000C88B1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		D3E420C515E41D97000C88B1 /* SeismicJSON-Prefix.pch */ = {isa = PBXFileReference; path = "SeismicJSON-Prefix.pch"; sourceTree = "<group>"; };
-		D3E420C615E41D97000C88B1 /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
-		D3E420C715E41D97000C88B1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		D3E420C315E41D97000C88B1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = main.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		D3E420C515E41D97000C88B1 /* SeismicJSON-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SeismicJSON-Prefix.pch"; sourceTree = "<group>"; };
+		D3E420C615E41D97000C88B1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AppDelegate.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		D3E420C715E41D97000C88B1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AppDelegate.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D3E420CA15E41D97000C88B1 /* SeismicJSON.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SeismicJSON.xcdatamodel; sourceTree = "<group>"; };
-		D3E420CC15E41D97000C88B1 /* MasterViewController.h */ = {isa = PBXFileReference; path = MasterViewController.h; sourceTree = "<group>"; };
+		D3E420CC15E41D97000C88B1 /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = MasterViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D3E420CD15E41D97000C88B1 /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
-		D3E420CF15E41D97000C88B1 /* DetailViewController.h */ = {isa = PBXFileReference; path = DetailViewController.h; sourceTree = "<group>"; };
-		D3E420D015E41D97000C88B1 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		D3E420CF15E41D97000C88B1 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = DetailViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		D3E420D015E41D97000C88B1 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DetailViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D3E420D315E41D97000C88B1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MasterViewController_iPhone.xib; sourceTree = "<group>"; };
 		D3E420D615E41D97000C88B1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MasterViewController_iPad.xib; sourceTree = "<group>"; };
 		D3E420D915E41D97000C88B1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DetailViewController_iPhone.xib; sourceTree = "<group>"; };
 		D3E420DC15E41D97000C88B1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DetailViewController_iPad.xib; sourceTree = "<group>"; };
 		D3E420E315E41D97000C88B1 /* SeismicJSONTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SeismicJSONTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3E420E415E41D97000C88B1 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		D3E420ED15E41D97000C88B1 /* SeismicJSONTests-Info.plist */ = {isa = PBXFileReference; path = "SeismicJSONTests-Info.plist"; sourceTree = "<group>"; };
+		D3E420ED15E41D97000C88B1 /* SeismicJSONTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SeismicJSONTests-Info.plist"; sourceTree = "<group>"; };
 		D3E420EF15E41D97000C88B1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		D3E420F115E41D97000C88B1 /* SeismicJSONTests.h */ = {isa = PBXFileReference; path = SeismicJSONTests.h; sourceTree = "<group>"; };
+		D3E420F115E41D97000C88B1 /* SeismicJSONTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SeismicJSONTests.h; sourceTree = "<group>"; };
 		D3E420F215E41D97000C88B1 /* SeismicJSONTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SeismicJSONTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
