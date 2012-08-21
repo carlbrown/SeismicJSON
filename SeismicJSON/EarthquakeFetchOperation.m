@@ -94,8 +94,25 @@
                     NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([Earthquake class]) inManagedObjectContext:context];
                     
                     [newManagedObject setValue:[eventDict valueForKeyPath:@"properties.place"] forKey:@"location"];
-                    [newManagedObject setValue:[NSDate date] forKey:@"date"]; //wrong, but just testing
                     
+                    NSDate *eventDate = [NSDate dateWithTimeIntervalSince1970:[[eventDict valueForKeyPath:@"properties.time"] doubleValue]];
+                    [newManagedObject setValue:eventDate forKey:@"date"]; 
+                    
+                    NSNumber *eventLat = [NSNumber numberWithDouble:[[[eventDict valueForKeyPath:@"geometry.coordinates"] objectAtIndex:0] doubleValue]];
+                    [newManagedObject setValue:eventLat forKey:@"latitude"];
+                    
+                    NSNumber *eventLong =[NSNumber numberWithDouble:[[[eventDict valueForKeyPath:@"geometry.coordinates"] objectAtIndex:1] doubleValue]];
+
+                    [newManagedObject setValue:eventLong forKey:@"longitude"];
+                    
+                    NSNumber *magnitude = [NSNumber numberWithFloat:[[eventDict valueForKeyPath:@"properties.mag"] floatValue]];
+                    
+                    [newManagedObject setValue:magnitude forKey:@"magnitude"];
+                    
+                    NSString *webPath = [@"http://earthquake.usgs.gov" stringByAppendingPathComponent:[eventDict valueForKeyPath:@"properties.url"]];
+
+                    [newManagedObject setValue:webPath forKey:@"webLinkToUSGS"];
+
                 }
                 
                 // Save the context.
@@ -106,7 +123,7 @@
                     NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
                     abort();
                 }
-                dispatch_async(dispatch_get_main_queue(), ^{
+                dispatch_sync(dispatch_get_main_queue(), ^{
                     NSError *error = nil;
                     if (![self.mainContext save:&error]) {
                         // Replace this implementation with code to handle the error appropriately.
