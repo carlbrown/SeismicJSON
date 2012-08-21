@@ -11,12 +11,14 @@
 #import "MasterViewController.h"
 
 #import "DetailViewController.h"
+#import "EarthquakeFetchOperation.h"
 
 @implementation AppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
+@synthesize fetchQueue = _fetchQueue;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -43,6 +45,18 @@
         self.window.rootViewController = self.splitViewController;
         masterViewController.managedObjectContext = self.managedObjectContext;
     }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(changesSaved:) name:NSManagedObjectContextDidSaveNotification
+                                               object:nil];
+    
+    [self setFetchQueue:[[NSOperationQueue alloc] init]];
+    EarthquakeFetchOperation *mainEFO = [[EarthquakeFetchOperation alloc] init];
+    [mainEFO setUrlForJSONData:[NSURL URLWithString:@"http://earthquake.usgs.gov/earthquakes/feed/geojson/significant/month"]];
+    [mainEFO setStoreCoordinator:self.persistentStoreCoordinator];
+    [self.fetchQueue addOperation:mainEFO];
+    
+    
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -86,6 +100,17 @@
             NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
             abort();
         } 
+    }
+}
+
+- (void)changesSaved:(NSNotification *)notification {
+    [self performSelectorOnMainThread:@selector(changesSavedOnMainThread:)
+                           withObject:notification waitUntilDone:YES];
+}
+
+- (void)changesSavedOnMainThread:(NSNotification *)notification {
+    if ([notification object] != self.managedObjectContext) {
+        [self.managedObjectContext mergeChangesFromContextDidSaveNotification:notification];
     }
 }
 

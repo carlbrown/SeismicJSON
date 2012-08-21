@@ -22,5 +22,10 @@
 @property (strong, nonatomic) UINavigationController *navigationController;
 
 @property (strong, nonatomic) UISplitViewController *splitViewController;
+@property (strong, nonatomic) NSOperationQueue *fetchQueue;
+
+
+- (void)changesSaved:(NSNotification *)notification;
+- (void)changesSavedMainThread:(NSNotification *)notification;
 
 @end

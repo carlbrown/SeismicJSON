@@ -29,6 +29,7 @@
 		D3E420F315E41D97000C88B1 /* SeismicJSONTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E420F215E41D97000C88B1 /* SeismicJSONTests.m */; };
 		D3E420FD15E41EFE000C88B1 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D3E420FC15E41EFE000C88B1 /* README.md */; };
 		D3E4210115E420DC000C88B1 /* Earthquake.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E4210015E420DC000C88B1 /* Earthquake.m */; };
+		D3E4210415E4237D000C88B1 /* EarthquakeFetchOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E4210315E4237D000C88B1 /* EarthquakeFetchOperation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,8 @@
 		D3E420FC15E41EFE000C88B1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
 		D3E420FF15E420DC000C88B1 /* Earthquake.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Earthquake.h; sourceTree = "<group>"; };
 		D3E4210015E420DC000C88B1 /* Earthquake.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Earthquake.m; sourceTree = "<group>"; };
+		D3E4210215E4237D000C88B1 /* EarthquakeFetchOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; path = EarthquakeFetchOperation.h; sourceTree = "<group>"; };
+		D3E4210315E4237D000C88B1 /* EarthquakeFetchOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EarthquakeFetchOperation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +136,7 @@
 		D3E420BD15E41D97000C88B1 /* SeismicJSON */ = {
 			isa = PBXGroup;
 			children = (
+				D3E4210515E42385000C88B1 /* Operations */,
 				D3E420FE15E420A5000C88B1 /* Models */,
 				D3E420C615E41D97000C88B1 /* AppDelegate.h */,
 				D3E420C715E41D97000C88B1 /* AppDelegate.m */,
@@ -188,6 +192,15 @@
 				D3E4210015E420DC000C88B1 /* Earthquake.m */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		D3E4210515E42385000C88B1 /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				D3E4210215E4237D000C88B1 /* EarthquakeFetchOperation.h */,
+				D3E4210315E4237D000C88B1 /* EarthquakeFetchOperation.m */,
+			);
+			name = Operations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -307,6 +320,7 @@
 				D3E420CE15E41D97000C88B1 /* MasterViewController.m in Sources */,
 				D3E420D115E41D97000C88B1 /* DetailViewController.m in Sources */,
 				D3E4210115E420DC000C88B1 /* Earthquake.m in Sources */,
+				D3E4210415E4237D000C88B1 /* EarthquakeFetchOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
