@@ -14,6 +14,7 @@
 #import "EarthquakeFetchOperation.h"
 
 #import "NetworkManager.h"
+#import "NotificationOrParentContext.h"
 
 #define kRESET_DATAFILE_EACH_RUN 1
 
@@ -48,9 +49,7 @@
         self.window.rootViewController = self.splitViewController;
         masterViewController.managedObjectContext = self.managedObjectContext;
     }
-    
-    [[NetworkManager sharedManager] startMainPageFetch];
-    
+        
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -85,6 +84,8 @@
                                              selector:@selector(changesSaved:) name:NSManagedObjectContextDidSaveNotification
                                                object:nil];
 #endif
+    [[NetworkManager sharedManager] startMainPageFetch];
+
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
