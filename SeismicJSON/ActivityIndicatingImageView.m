@@ -43,7 +43,9 @@
 }
 
 -(void) imageDidBecomeAvailableAtPath:(NSString *) path {
-    [self setImage:[UIImage imageWithContentsOfFile:path]];
+    dispatch_async(dispatch_get_current_queue(), ^{
+        [self setImage:[UIImage imageWithContentsOfFile:path]];
+    });
 }
 
 /*
