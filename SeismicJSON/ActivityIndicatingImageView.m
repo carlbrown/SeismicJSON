@@ -63,7 +63,7 @@
         [self setImageFileName:self.imageFileName];
         return;
     }
-    dispatch_async(dispatch_get_current_queue(), ^{
+    dispatch_async(dispatch_get_main_queue(), ^{
         [self setImage:[UIImage imageWithContentsOfFile:path]];
         [self setNeedsDisplay];
     });
