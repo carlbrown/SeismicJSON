@@ -3,7 +3,7 @@
 //  SeismicJSON
 //
 //  Created by Carl Brown on 8/21/12.
-//  Copyright (c) 2012 PDAgent. All rights reserved.
+//  Copyright (c) 2012 PDAgent. Released under MIT license ( http://opensource.org/licenses/MIT ).
 //
 
 #import "EarthquakeFetchOperation.h"
@@ -64,6 +64,10 @@
         return;
     }
     [self.jsonData appendData:data];
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    NSLog(@"Error connecting: %@",[error localizedDescription]);
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
