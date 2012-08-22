@@ -10,10 +10,10 @@
 
 #import "DetailViewController.h"
 #import "Earthquake.h"
-#import "NetworkManager.h"
 #import "EarthQuakeTableViewCell.h"
 #import "Earthquake+ThumbnailURL.h"
 #import "ActivityIndicatingImageView.h"
+#import "NotificationOrParentContext.h"
 
 @interface MasterViewController ()
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
@@ -42,6 +42,34 @@
 
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(showSelectorActionSheet:)];
     self.navigationItem.rightBarButtonItem = addButton;
+}
+
+-(void) viewWillAppear:(BOOL)animated {
+#if USE_NSNOTIFICATIONS_FOR_CONTEXT_MERGE
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(changesSaved:) name:NSManagedObjectContextDidSaveNotification
+                                               object:nil];
+#endif
+}
+
+- (void)changesSaved:(NSNotification *)notification {
+    if (![NSThread isMainThread]) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self changesSaved:notification];
+        });
+        return;
+    }
+    if ([notification object] != self.managedObjectContext) {
+        [self.managedObjectContext mergeChangesFromContextDidSaveNotification:notification];
+    }
+}
+
+-(void) viewWillDisappear:(BOOL)animated {
+#if USE_NSNOTIFICATIONS_FOR_CONTEXT_MERGE
+        [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:NSManagedObjectContextDidSaveNotification
+                                                  object:nil];
+#endif
 }
 
 - (void)didReceiveMemoryWarning

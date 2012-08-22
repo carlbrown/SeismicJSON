@@ -8,6 +8,7 @@
 
 #import "EarthquakeFetchOperation.h"
 #import "Earthquake.h"
+#import "NotificationOrParentContext.h"
 
 @implementation EarthquakeFetchOperation
 @synthesize mainContext = _mainContext;
@@ -34,9 +35,13 @@
         
         id objectFromJSON = [NSJSONSerialization JSONObjectWithData:self.fetchedData options:0 error:&error];
         if (objectFromJSON) {
+#if USE_NSNOTIFICATIONS_FOR_CONTEXT_MERGE
+                NSManagedObjectContext *context = [[NSManagedObjectContext alloc] init];
+                [context setPersistentStoreCoordinator:self.mainContext.persistentStoreCoordinator];
+#else
             NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
-            [context setParentContext:[self mainContext]];
-            
+                [context setParentContext:[self mainContext]];
+#endif
             
             NSDictionary *jsonDict = (NSDictionary *) objectFromJSON;
             
@@ -88,16 +93,17 @@
                         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
                         abort();
                     }
-                    dispatch_sync(dispatch_get_main_queue(), ^{
-                        NSError *error = nil;
-                        if (![self.mainContext save:&error]) {
-                            // Replace this implementation with code to handle the error appropriately.
-                            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
-                            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-                            abort();
-                        }
-                    });
-                    
+#if USE_PARENT_CONTEXTS_FOR_CONTEXT_MERGE
+                        dispatch_sync(dispatch_get_main_queue(), ^{
+                            NSError *error = nil;
+                            if (![self.mainContext save:&error]) {
+                                // Replace this implementation with code to handle the error appropriately.
+                                // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
+                                NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+                                abort();
+                            }
+                        });
+#endif
                 }
             }
         }

@@ -64,6 +64,7 @@
 		D353B7F415E4A07E00FF0E5D /* BaseFetchOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseFetchOperation.m; sourceTree = "<group>"; };
 		D353B7F615E4A11300FF0E5D /* ImageFetchOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageFetchOperation.h; sourceTree = "<group>"; };
 		D353B7F715E4A11300FF0E5D /* ImageFetchOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageFetchOperation.m; sourceTree = "<group>"; };
+		D353B7F915E4B80900FF0E5D /* NotificationOrParentContext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationOrParentContext.h; sourceTree = "<group>"; };
 		D3D3605115E47F49008B941A /* USGSURLMapData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = USGSURLMapData.plist; sourceTree = "<group>"; };
 		D3E420B115E41D97000C88B1 /* SeismicJSON.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeismicJSON.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3E420B515E41D97000C88B1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -180,6 +181,7 @@
 			children = (
 				D3E420C615E41D97000C88B1 /* AppDelegate.h */,
 				D3E420C715E41D97000C88B1 /* AppDelegate.m */,
+				D353B7F915E4B80900FF0E5D /* NotificationOrParentContext.h */,
 				D3E4212215E470A0000C88B1 /* NetworkManager.h */,
 				D3E4212315E470A0000C88B1 /* NetworkManager.m */,
 				D3E4211C15E47014000C88B1 /* ViewControllers */,
