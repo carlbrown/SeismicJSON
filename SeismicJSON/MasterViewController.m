@@ -53,6 +53,7 @@
 }
 
 -(void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
 #if kUSE_NSNOTIFICATIONS_FOR_CONTEXT_MERGE && kNSNOTIFICATIONS_HANDLED_IN_VIEWCONTROLLER
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(changesSaved:) name:NSManagedObjectContextDidSaveNotification
@@ -81,6 +82,7 @@
                                                     name:NSManagedObjectContextDidSaveNotification
                                                   object:nil];
 #endif
+    [super viewWillDisappear:animated];
 }
 
 - (void)didReceiveMemoryWarning
