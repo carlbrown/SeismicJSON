@@ -24,6 +24,7 @@
 @synthesize dateLabel;
 @synthesize urlLabel;
 @synthesize detailItem = _detailItem;
+@synthesize masterPopoverController = _masterPopoverController;
 
 - (void)setDetailItem:(id)newDetailItem
 {

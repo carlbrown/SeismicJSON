@@ -548,6 +548,7 @@
 		D3E420F715E41D97000C88B1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SeismicJSON/SeismicJSON-Prefix.pch";
 				INFOPLIST_FILE = "SeismicJSON/SeismicJSON-Info.plist";
@@ -559,6 +560,7 @@
 		D3E420F815E41D97000C88B1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SeismicJSON/SeismicJSON-Prefix.pch";
 				INFOPLIST_FILE = "SeismicJSON/SeismicJSON-Info.plist";

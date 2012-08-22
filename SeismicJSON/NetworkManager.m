@@ -39,6 +39,7 @@ static NetworkManager __strong *sharedManager = nil;
 @synthesize urlMap = _urlMap;
 @synthesize hostReach = _hostReach;
 @synthesize cachedImageDirectory = _cachedImageDirectory;
+@synthesize activeFetches = _activeFetches;
 
 + (NetworkManager *)sharedManager {
     static dispatch_once_t pred; dispatch_once(&pred, ^{

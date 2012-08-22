@@ -23,6 +23,9 @@
 @implementation MasterViewController
 @synthesize tableView = _tableView;
 @synthesize filterBar = _filterBar;
+@synthesize detailViewController = _detailViewController;
+@synthesize fetchedResultsController = _fetchedResultsController;
+@synthesize managedObjectContext = _managedObjectContext;
 
 @synthesize dateFormatter = _dateFormatter;
 
