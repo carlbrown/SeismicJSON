@@ -13,12 +13,13 @@
 #import "DetailViewController.h"
 #import "EarthquakeFetchOperation.h"
 
+#import "NetworkManager.h"
+
 @implementation AppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
-@synthesize fetchQueue = _fetchQueue;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -45,13 +46,8 @@
         self.window.rootViewController = self.splitViewController;
         masterViewController.managedObjectContext = self.managedObjectContext;
     }
-        
-    [self setFetchQueue:[[NSOperationQueue alloc] init]];
-    EarthquakeFetchOperation *mainEFO = [[EarthquakeFetchOperation alloc] init];
-    [mainEFO setUrlForJSONData:[NSURL URLWithString:@"http://earthquake.usgs.gov/earthquakes/feed/geojson/significant/month"]];
-    [mainEFO setMainContext:self.managedObjectContext];
-    [self.fetchQueue addOperation:mainEFO];
     
+    [[NetworkManager sharedManager] startMainPageFetch];
     
     [self.window makeKeyAndVisible];
     return YES;

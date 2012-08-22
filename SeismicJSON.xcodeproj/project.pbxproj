@@ -30,6 +30,9 @@
 		D3E420FD15E41EFE000C88B1 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D3E420FC15E41EFE000C88B1 /* README.md */; };
 		D3E4210115E420DC000C88B1 /* Earthquake.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E4210015E420DC000C88B1 /* Earthquake.m */; };
 		D3E4210415E4237D000C88B1 /* EarthquakeFetchOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E4210315E4237D000C88B1 /* EarthquakeFetchOperation.m */; };
+		D3E4212115E47078000C88B1 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E4212015E47078000C88B1 /* Reachability.m */; };
+		D3E4212415E470A0000C88B1 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E4212315E470A0000C88B1 /* NetworkManager.m */; };
+		D3E4212615E47258000C88B1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E4212515E47258000C88B1 /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,8 +75,13 @@
 		D3E420FC15E41EFE000C88B1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
 		D3E420FF15E420DC000C88B1 /* Earthquake.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Earthquake.h; sourceTree = "<group>"; };
 		D3E4210015E420DC000C88B1 /* Earthquake.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Earthquake.m; sourceTree = "<group>"; };
-		D3E4210215E4237D000C88B1 /* EarthquakeFetchOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; path = EarthquakeFetchOperation.h; sourceTree = "<group>"; };
+		D3E4210215E4237D000C88B1 /* EarthquakeFetchOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EarthquakeFetchOperation.h; sourceTree = "<group>"; };
 		D3E4210315E4237D000C88B1 /* EarthquakeFetchOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EarthquakeFetchOperation.m; sourceTree = "<group>"; };
+		D3E4211F15E47078000C88B1 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = external/AppleReachability/Reachability.h; sourceTree = "<group>"; };
+		D3E4212015E47078000C88B1 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = external/AppleReachability/Reachability.m; sourceTree = "<group>"; };
+		D3E4212215E470A0000C88B1 /* NetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
+		D3E4212315E470A0000C88B1 /* NetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
+		D3E4212515E47258000C88B1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3E4212615E47258000C88B1 /* SystemConfiguration.framework in Frameworks */,
 				D3E420B615E41D97000C88B1 /* UIKit.framework in Frameworks */,
 				D3E420B815E41D97000C88B1 /* Foundation.framework in Frameworks */,
 				D3E420BA15E41D97000C88B1 /* CoreGraphics.framework in Frameworks */,
@@ -107,6 +116,7 @@
 			children = (
 				D3E420BD15E41D97000C88B1 /* SeismicJSON */,
 				D3E420EB15E41D97000C88B1 /* SeismicJSONTests */,
+				D3E4211D15E4703E000C88B1 /* External */,
 				D3E420B415E41D97000C88B1 /* Frameworks */,
 				D3E420B215E41D97000C88B1 /* Products */,
 			);
@@ -124,6 +134,7 @@
 		D3E420B415E41D97000C88B1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D3E4212515E47258000C88B1 /* SystemConfiguration.framework */,
 				D3E420B515E41D97000C88B1 /* UIKit.framework */,
 				D3E420B715E41D97000C88B1 /* Foundation.framework */,
 				D3E420B915E41D97000C88B1 /* CoreGraphics.framework */,
@@ -136,20 +147,14 @@
 		D3E420BD15E41D97000C88B1 /* SeismicJSON */ = {
 			isa = PBXGroup;
 			children = (
-				D3E4210515E42385000C88B1 /* Operations */,
-				D3E420FE15E420A5000C88B1 /* Models */,
 				D3E420C615E41D97000C88B1 /* AppDelegate.h */,
 				D3E420C715E41D97000C88B1 /* AppDelegate.m */,
-				D3E420CC15E41D97000C88B1 /* MasterViewController.h */,
-				D3E420CD15E41D97000C88B1 /* MasterViewController.m */,
-				D3E420CF15E41D97000C88B1 /* DetailViewController.h */,
-				D3E420D015E41D97000C88B1 /* DetailViewController.m */,
-				D3E420D215E41D97000C88B1 /* MasterViewController_iPhone.xib */,
-				D3E420D515E41D97000C88B1 /* MasterViewController_iPad.xib */,
-				D3E420D815E41D97000C88B1 /* DetailViewController_iPhone.xib */,
-				D3E420DB15E41D97000C88B1 /* DetailViewController_iPad.xib */,
+				D3E4212215E470A0000C88B1 /* NetworkManager.h */,
+				D3E4212315E470A0000C88B1 /* NetworkManager.m */,
+				D3E4211C15E47014000C88B1 /* ViewControllers */,
+				D3E4210515E42385000C88B1 /* Operations */,
+				D3E420FE15E420A5000C88B1 /* Models */,
 				D3E420BE15E41D97000C88B1 /* Supporting Files */,
-				D3E420FC15E41EFE000C88B1 /* README.md */,
 			);
 			path = SeismicJSON;
 			sourceTree = "<group>";
@@ -157,6 +162,7 @@
 		D3E420BE15E41D97000C88B1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D3E420FC15E41EFE000C88B1 /* README.md */,
 				D3E420BF15E41D97000C88B1 /* SeismicJSON-Info.plist */,
 				D3E420C015E41D97000C88B1 /* InfoPlist.strings */,
 				D3E420C315E41D97000C88B1 /* main.m */,
@@ -201,6 +207,46 @@
 				D3E4210315E4237D000C88B1 /* EarthquakeFetchOperation.m */,
 			);
 			name = Operations;
+			sourceTree = "<group>";
+		};
+		D3E4211B15E46FFF000C88B1 /* NIBs */ = {
+			isa = PBXGroup;
+			children = (
+				D3E420D215E41D97000C88B1 /* MasterViewController_iPhone.xib */,
+				D3E420D515E41D97000C88B1 /* MasterViewController_iPad.xib */,
+				D3E420D815E41D97000C88B1 /* DetailViewController_iPhone.xib */,
+				D3E420DB15E41D97000C88B1 /* DetailViewController_iPad.xib */,
+			);
+			name = NIBs;
+			sourceTree = "<group>";
+		};
+		D3E4211C15E47014000C88B1 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D3E4211B15E46FFF000C88B1 /* NIBs */,
+				D3E420CC15E41D97000C88B1 /* MasterViewController.h */,
+				D3E420CD15E41D97000C88B1 /* MasterViewController.m */,
+				D3E420CF15E41D97000C88B1 /* DetailViewController.h */,
+				D3E420D015E41D97000C88B1 /* DetailViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		D3E4211D15E4703E000C88B1 /* External */ = {
+			isa = PBXGroup;
+			children = (
+				D3E4211E15E4705D000C88B1 /* AppleReachability */,
+			);
+			name = External;
+			sourceTree = "<group>";
+		};
+		D3E4211E15E4705D000C88B1 /* AppleReachability */ = {
+			isa = PBXGroup;
+			children = (
+				D3E4211F15E47078000C88B1 /* Reachability.h */,
+				D3E4212015E47078000C88B1 /* Reachability.m */,
+			);
+			name = AppleReachability;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -321,6 +367,8 @@
 				D3E420D115E41D97000C88B1 /* DetailViewController.m in Sources */,
 				D3E4210115E420DC000C88B1 /* Earthquake.m in Sources */,
 				D3E4210415E4237D000C88B1 /* EarthquakeFetchOperation.m in Sources */,
+				D3E4212115E47078000C88B1 /* Reachability.m in Sources */,
+				D3E4212415E470A0000C88B1 /* NetworkManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,6 +564,7 @@
 				D3E420F815E41D97000C88B1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D3E420F915E41D97000C88B1 /* Build configuration list for PBXNativeTarget "SeismicJSONTests" */ = {
 			isa = XCConfigurationList;
@@ -524,6 +573,7 @@
 				D3E420FB15E41D97000C88B1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
