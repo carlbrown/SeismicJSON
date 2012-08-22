@@ -173,6 +173,14 @@ static NetworkManager __strong *sharedManager = nil;
 }
 
 -(void) fetchImagewithFilename:(NSString *) filename andNotifyTarget:(NSObject <ImageFetchDelegate> *) target {
+    
+    //If the file already exists, don't bother to fetch it again
+    NSString *fullFilePath = [[self cachedImageDirectory] stringByAppendingPathComponent:filename];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:fullFilePath]) {
+        [target imageDidBecomeAvailableAtPath:fullFilePath];
+        return;
+    }
+    
     ImageFetchOperation *imageFetchOperation = [[ImageFetchOperation alloc] init];
     [imageFetchOperation setUrlToFetch:[self imageURLForImageFileName:filename]];
     [imageFetchOperation setNotificationTarget:target];
