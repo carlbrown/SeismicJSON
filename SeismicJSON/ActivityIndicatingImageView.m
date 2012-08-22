@@ -63,8 +63,10 @@
         [self setImageFileName:self.imageFileName];
         return;
     }
+    //load image off the main queue
+    UIImage *imageToLoad=[UIImage imageWithContentsOfFile:path];
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self setImage:[UIImage imageWithContentsOfFile:path]];
+        [self setImage:imageToLoad];
         [self setNeedsDisplay];
     });
 }
