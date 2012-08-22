@@ -17,9 +17,12 @@
 
 @interface MasterViewController ()
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
+@property (nonatomic, retain) NSDateFormatter *dateFormatter;
 @end
 
 @implementation MasterViewController
+
+@synthesize dateFormatter = _dateFormatter;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -42,6 +45,10 @@
 
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(showSelectorActionSheet:)];
     self.navigationItem.rightBarButtonItem = addButton;
+    
+    self.dateFormatter=[[NSDateFormatter alloc] init];
+    [self.dateFormatter setDateStyle:NSDateFormatterShortStyle];
+    [self.dateFormatter setTimeStyle:NSDateFormatterShortStyle];
 }
 
 -(void) viewWillAppear:(BOOL)animated {
@@ -301,7 +308,7 @@
     Earthquake *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.locationLabel.text = [object location];
     cell.magnitudeLabel.text = [[object magnitude] description];
-    cell.dateLabel.text = [[object date] description];
+    cell.dateLabel.text = [self.dateFormatter stringFromDate:[object date]];
     [cell.globeThumbnailImageView setImageFileName:[object thumbnailFilenameString]];
 }
 
