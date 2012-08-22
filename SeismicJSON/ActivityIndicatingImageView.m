@@ -33,18 +33,39 @@
     [super setImage:image];
     if (image) {
         [self.activityIndicator stopAnimating];
+    } else {
+        [self.activityIndicator startAnimating];
     }
 }
 
 -(void) setImageFileName:(NSString *)imageFileName {
     _imageFileName = imageFileName;
+    if (_imageFileName==nil) {
+        [self setImage:nil];
+        return;
+    }
+    
+    //If the file already exists, don't bother to fetch it again
+    NSString *fullFilePath = [[[NetworkManager sharedManager] cachedImageDirectory] stringByAppendingPathComponent:_imageFileName];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:fullFilePath]) {
+        [self imageDidBecomeAvailableAtPath:fullFilePath];
+        return;
+    }
+
     [[NetworkManager sharedManager] fetchImagewithFilename:imageFileName andNotifyTarget:self];
     
 }
 
 -(void) imageDidBecomeAvailableAtPath:(NSString *) path {
+    if (![[path lastPathComponent] isEqualToString:self.imageFileName]) {
+        NSLog(@"Warning: notified of incorrect file:%@, should have been %@",[path lastPathComponent],self.imageFileName);
+        //try again
+        [self setImageFileName:self.imageFileName];
+        return;
+    }
     dispatch_async(dispatch_get_current_queue(), ^{
         [self setImage:[UIImage imageWithContentsOfFile:path]];
+        [self setNeedsDisplay];
     });
 }
 

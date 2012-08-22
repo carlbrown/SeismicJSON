@@ -7,6 +7,7 @@
 //
 
 #import "EarthQuakeTableViewCell.h"
+#import "ActivityIndicatingImageView.h"
 
 @implementation EarthQuakeTableViewCell
 @synthesize magnitudeLabel;
@@ -28,6 +29,14 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+-(void) prepareForReuse {
+    [self.globeThumbnailImageView setImage:nil];
+    [self.globeThumbnailImageView setImageFileName:nil];
+    [self.magnitudeLabel setText:nil];
+    [self.locationLabel setText:nil];
+    [self.dateLabel setText:nil];
 }
 
 @end
