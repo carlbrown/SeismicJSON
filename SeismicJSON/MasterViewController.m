@@ -57,8 +57,12 @@
 }
 
 -(void) showSelectorActionSheet:(id) sender {
+    NSArray *timeFrames = [[NetworkManager sharedManager] availableTimeFrames];
+    if (!timeFrames) {
+        return;
+    }
     UIActionSheet *actionsheet = [[UIActionSheet alloc] initWithTitle:@"Pick TimeFrame" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:nil];
-    for (NSString *buttonTitle in [[NetworkManager sharedManager] availableTimeFrames]) {
+    for (NSString *buttonTitle in timeFrames) {
         [actionsheet addButtonWithTitle:buttonTitle];
     }
     [actionsheet showInView:self.view];
@@ -70,15 +74,22 @@
     }
     NSString *title = [actionSheet title];
     if ([title isEqualToString:@"Pick TimeFrame"]) {
+        NSArray *significanceFilters = [[NetworkManager sharedManager] significanceFiltersForTimeFrame:[actionSheet buttonTitleAtIndex:buttonIndex]];
+        if (!significanceFilters) {
+            return;
+        }
         //launch the next actionsheet
         UIActionSheet *actionsheet = [[UIActionSheet alloc] initWithTitle:[actionSheet buttonTitleAtIndex:buttonIndex] delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:nil];
-        for (NSString *buttonTitle in [[NetworkManager sharedManager] significanceFiltersForTimeFrame:[actionSheet buttonTitleAtIndex:buttonIndex]]) {
+        for (NSString *buttonTitle in significanceFilters) {
             [actionsheet addButtonWithTitle:buttonTitle];
         }
         [actionsheet showInView:self.view];
     } else {
         //launch the correct url
         NSString *relativeURL = [[NetworkManager sharedManager] relativeJSONURLForTimeFrame:title andSignificance:[actionSheet buttonTitleAtIndex:buttonIndex]];
+        if (!relativeURL) {
+            return;
+        }
         [[NetworkManager sharedManager] queuePageFetchForRelativePath:relativeURL];
     }
 }

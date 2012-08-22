@@ -74,14 +74,32 @@ static NetworkManager __strong *sharedManager = nil;
 }
 
 -(NSArray *) availableTimeFrames {
+    if (!self.isNetworkOnline) {
+        UIAlertView *networkAlertView = [[UIAlertView alloc] initWithTitle:@"Network Offline" message:@"Cannot talk to network" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [networkAlertView show];
+
+        return nil;
+    }
     return [self.urlMap allKeys];
 }
 
 -(NSArray *) significanceFiltersForTimeFrame:(NSString *) timeFrame {
+    if (!self.isNetworkOnline) {
+        UIAlertView *networkAlertView = [[UIAlertView alloc] initWithTitle:@"Network Offline" message:@"Cannot talk to network" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [networkAlertView show];
+        
+        return nil;
+    }
     return [[self.urlMap objectForKey:timeFrame] allKeys];
 }
 
 -(NSString *) relativeJSONURLForTimeFrame:(NSString *)timeFrame andSignificance:(NSString *) significance {
+    if (!self.isNetworkOnline) {
+        UIAlertView *networkAlertView = [[UIAlertView alloc] initWithTitle:@"Network Offline" message:@"Cannot talk to network" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [networkAlertView show];
+        
+        return nil;
+    }
     return [[self.urlMap objectForKey:timeFrame] objectForKey:significance];
 }
 
