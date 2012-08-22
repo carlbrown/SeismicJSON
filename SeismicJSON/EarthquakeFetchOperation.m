@@ -34,7 +34,11 @@
 
     [self setJsonData:[NSMutableData data]]; //Initialize
     NSURLRequest *request = [NSURLRequest requestWithURL:[self urlForJSONData]];
-
+    
+    if (self.delegate) {
+        [self.delegate incrementActiveFetches];
+    }
+    
     [self setConnection:[NSURLConnection connectionWithRequest:request delegate:self]];
 
     CFRunLoopRun();
@@ -43,6 +47,9 @@
 
 -(void) finish {
     [self setDone:YES];
+    if (self.delegate) {
+        [self.delegate decrementActiveFetches];
+    }
     CFRunLoopStop(CFRunLoopGetCurrent());
 }
 
@@ -72,6 +79,7 @@
     if (self.delegate) {
         [self.delegate fetchDidFailWithError:error];
     }
+    [self finish];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
@@ -152,7 +160,7 @@
             }
         }
     }
-    
+    [self finish];
 }
 
 @end

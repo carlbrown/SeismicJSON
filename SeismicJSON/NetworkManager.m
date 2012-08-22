@@ -13,6 +13,21 @@
 
 static NetworkManager __strong *sharedManager = nil;
 
+@interface NetworkManager ()
+@property (nonatomic, strong) NSString *baseURLString;
+@property (nonatomic, strong) NSOperationQueue *fetchQueue;
+@property (nonatomic, weak) NSManagedObjectContext *mainContext;
+@property (nonatomic, assign, getter = isNetworkOnline) BOOL networkOnline;
+@property (nonatomic, strong, readonly) NSDictionary *urlMap;
+@property (nonatomic, strong) Reachability *hostReach;
+@property (atomic, readwrite) NSUInteger activeFetches;
+
+
+-(NSURL *) baseURL;
+-(NSURL *) urlForRelativePath:(NSString *) relativePath;
+
+@end
+
 @implementation NetworkManager
 
 @synthesize fetchQueue = _fetchQueue;
@@ -31,6 +46,7 @@ static NetworkManager __strong *sharedManager = nil;
         //Assume the network is up to start with
         [sharedManager setNetworkOnline:YES];
         [[NSNotificationCenter defaultCenter] addObserver:sharedManager selector: @selector(reachabilityChanged:) name: kReachabilityChangedNotification object: nil];
+        [sharedManager setActiveFetches:0];
     });
     return sharedManager;
 }
@@ -115,6 +131,22 @@ static NetworkManager __strong *sharedManager = nil;
         [self setNetworkOnline:NO];
     }
     
+}
+
+-(void) incrementActiveFetches {
+    self.activeFetches++;
+    if (![[UIApplication sharedApplication] isNetworkActivityIndicatorVisible]) {
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    }
+}
+
+-(void) decrementActiveFetches {
+    if (self.activeFetches > 1) {
+        self.activeFetches--;
+        return;
+    }
+    self.activeFetches=0;
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 }
 
 @end

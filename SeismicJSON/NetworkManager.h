@@ -16,17 +16,6 @@
 
 + (NetworkManager *)sharedManager;
 
-@property (nonatomic, strong) NSString *baseURLString;
-@property (nonatomic, strong) NSOperationQueue *fetchQueue;
-@property (nonatomic, weak) NSManagedObjectContext *mainContext;
-@property (nonatomic, assign, getter = isNetworkOnline) BOOL networkOnline;
-@property (nonatomic, strong, readonly) NSDictionary *urlMap;
-@property (nonatomic, strong) Reachability* hostReach;
-
-
--(NSURL *) baseURL;
--(NSURL *) urlForRelativePath:(NSString *) relativePath;
-
 -(void) queuePageFetchForRelativePath:(NSString *) relativePath;
 -(void) startMainPageFetch;
 

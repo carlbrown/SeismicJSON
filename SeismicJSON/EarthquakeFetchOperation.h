@@ -27,4 +27,6 @@
 
 @protocol FetchNotifierDelegate <NSObject>
 -(void) fetchDidFailWithError:(NSError *) error;
+-(void) incrementActiveFetches;
+-(void) decrementActiveFetches;
 @end
