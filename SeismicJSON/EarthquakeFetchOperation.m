@@ -99,27 +99,35 @@
                 
                 for (NSDictionary *eventDict in events) {
                     
-                    NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([Earthquake class]) inManagedObjectContext:context];
-                    
-                    [newManagedObject setValue:[eventDict valueForKeyPath:@"properties.place"] forKey:@"location"];
-                    
+                    NSString *eventLocation = [eventDict valueForKeyPath:@"properties.place"];
                     NSDate *eventDate = [NSDate dateWithTimeIntervalSince1970:[[eventDict valueForKeyPath:@"properties.time"] doubleValue]];
-                    [newManagedObject setValue:eventDate forKey:@"date"]; 
-                    
                     NSNumber *eventLat = [NSNumber numberWithDouble:[[[eventDict valueForKeyPath:@"geometry.coordinates"] objectAtIndex:0] doubleValue]];
-                    [newManagedObject setValue:eventLat forKey:@"latitude"];
-                    
                     NSNumber *eventLong =[NSNumber numberWithDouble:[[[eventDict valueForKeyPath:@"geometry.coordinates"] objectAtIndex:1] doubleValue]];
+                    NSNumber *eventMagnitude = [NSNumber numberWithFloat:[[eventDict valueForKeyPath:@"properties.mag"] floatValue]];
+                    NSString *eventWebPath = [@"http://earthquake.usgs.gov" stringByAppendingPathComponent:[eventDict valueForKeyPath:@"properties.url"]];
+                    
+                    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:NSStringFromClass([Earthquake class])];
+                    [fetchRequest setFetchLimit:1];
+                    NSPredicate *eventInfo = [NSPredicate predicateWithFormat:@"location = %@ AND date = %@",
+                                              eventLocation,
+                                              eventDate];
+                    [fetchRequest setPredicate:eventInfo];
+                    NSError *fetchError=nil;
+                    NSArray *existingEventsMatchingThisOne = [context executeFetchRequest:fetchRequest error:&fetchError];
+                    if (existingEventsMatchingThisOne==nil) {
+                        NSLog(@"Error checking for existing record: %@",[fetchError localizedDescription]);
+                    } else if ([existingEventsMatchingThisOne count]==0) {
 
-                    [newManagedObject setValue:eventLong forKey:@"longitude"];
-                    
-                    NSNumber *magnitude = [NSNumber numberWithFloat:[[eventDict valueForKeyPath:@"properties.mag"] floatValue]];
-                    
-                    [newManagedObject setValue:magnitude forKey:@"magnitude"];
-                    
-                    NSString *webPath = [@"http://earthquake.usgs.gov" stringByAppendingPathComponent:[eventDict valueForKeyPath:@"properties.url"]];
-
-                    [newManagedObject setValue:webPath forKey:@"webLinkToUSGS"];
+                        //Didn't find one already, make a new one
+                        NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([Earthquake class]) inManagedObjectContext:context];
+                        
+                        [newManagedObject setValue:eventLocation forKey:@"location"];
+                        [newManagedObject setValue:eventDate forKey:@"date"]; 
+                        [newManagedObject setValue:eventLat forKey:@"latitude"];
+                        [newManagedObject setValue:eventLong forKey:@"longitude"];
+                        [newManagedObject setValue:eventMagnitude forKey:@"magnitude"];
+                        [newManagedObject setValue:eventWebPath forKey:@"webLinkToUSGS"];
+                    }
 
                 }
                 
