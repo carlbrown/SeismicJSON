@@ -10,6 +10,7 @@
 
 #import "DetailViewController.h"
 #import "Earthquake.h"
+#import "NetworkManager.h"
 
 @interface MasterViewController ()
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
@@ -34,7 +35,10 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(showSelectorActionSheet:)];
+    self.navigationItem.rightBarButtonItem = addButton;
 }
 
 - (void)didReceiveMemoryWarning
@@ -52,23 +56,30 @@
     }
 }
 
-- (void)insertNewObject:(id)sender
-{
-    NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
-    NSEntityDescription *entity = [[self.fetchedResultsController fetchRequest] entity];
-    NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:context];
-    
-    // If appropriate, configure the new managed object.
-    // Normally you should use accessor methods, but using KVC here avoids the need to add a custom class to the template.
-    [newManagedObject setValue:[NSDate date] forKey:@"timeStamp"];
-    
-    // Save the context.
-    NSError *error = nil;
-    if (![context save:&error]) {
-         // Replace this implementation with code to handle the error appropriately.
-         // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
+-(void) showSelectorActionSheet:(id) sender {
+    UIActionSheet *actionsheet = [[UIActionSheet alloc] initWithTitle:@"Pick TimeFrame" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:nil];
+    for (NSString *buttonTitle in [[NetworkManager sharedManager] availableTimeFrames]) {
+        [actionsheet addButtonWithTitle:buttonTitle];
+    }
+    [actionsheet showInView:self.view];
+}
+
+-(void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"Cancel"]) {
+        return;
+    }
+    NSString *title = [actionSheet title];
+    if ([title isEqualToString:@"Pick TimeFrame"]) {
+        //launch the next actionsheet
+        UIActionSheet *actionsheet = [[UIActionSheet alloc] initWithTitle:[actionSheet buttonTitleAtIndex:buttonIndex] delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:nil];
+        for (NSString *buttonTitle in [[NetworkManager sharedManager] significanceFiltersForTimeFrame:[actionSheet buttonTitleAtIndex:buttonIndex]]) {
+            [actionsheet addButtonWithTitle:buttonTitle];
+        }
+        [actionsheet showInView:self.view];
+    } else {
+        //launch the correct url
+        NSString *relativeURL = [[NetworkManager sharedManager] relativeJSONURLForTimeFrame:title andSignificance:[actionSheet buttonTitleAtIndex:buttonIndex]];
+        [[NetworkManager sharedManager] queuePageFetchForRelativePath:relativeURL];
     }
 }
 
