@@ -53,13 +53,14 @@
 }
 
 -(void) viewWillAppear:(BOOL)animated {
-#if kUSE_NSNOTIFICATIONS_FOR_CONTEXT_MERGE
+#if kUSE_NSNOTIFICATIONS_FOR_CONTEXT_MERGE && kNSNOTIFICATIONS_HANDLED_IN_VIEWCONTROLLER
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(changesSaved:) name:NSManagedObjectContextDidSaveNotification
                                                object:nil];
 #endif
 }
 
+#if kUSE_NSNOTIFICATIONS_FOR_CONTEXT_MERGE && kNSNOTIFICATIONS_HANDLED_IN_VIEWCONTROLLER
 - (void)changesSaved:(NSNotification *)notification {
     if (![NSThread isMainThread]) {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -71,9 +72,11 @@
         [self.managedObjectContext mergeChangesFromContextDidSaveNotification:notification];
     }
 }
+#endif
 
 -(void) viewWillDisappear:(BOOL)animated {
-#if kUSE_NSNOTIFICATIONS_FOR_CONTEXT_MERGE
+#if kUSE_NSNOTIFICATIONS_FOR_CONTEXT_MERGE && kNSNOTIFICATIONS_HANDLED_IN_VIEWCONTROLLER
+
         [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:NSManagedObjectContextDidSaveNotification
                                                   object:nil];
