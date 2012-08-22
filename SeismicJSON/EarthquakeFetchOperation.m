@@ -35,7 +35,7 @@
         
         id objectFromJSON = [NSJSONSerialization JSONObjectWithData:self.fetchedData options:0 error:&error];
         if (objectFromJSON) {
-#if USE_NSNOTIFICATIONS_FOR_CONTEXT_MERGE
+#if kUSE_NSNOTIFICATIONS_FOR_CONTEXT_MERGE
                 NSManagedObjectContext *context = [[NSManagedObjectContext alloc] init];
                 [context setPersistentStoreCoordinator:self.mainContext.persistentStoreCoordinator];
 #else
@@ -93,7 +93,7 @@
                         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
                         abort();
                     }
-#if USE_PARENT_CONTEXTS_FOR_CONTEXT_MERGE
+#if kUSE_PARENT_CONTEXTS_FOR_CONTEXT_MERGE
                         dispatch_sync(dispatch_get_main_queue(), ^{
                             NSError *error = nil;
                             if (![self.mainContext save:&error]) {

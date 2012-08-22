@@ -15,6 +15,8 @@
 
 #import "NetworkManager.h"
 
+#define kRESET_DATAFILE_EACH_RUN 1
+
 @implementation AppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;
@@ -135,9 +137,24 @@
     
     NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"SeismicJSON.sqlite"];
     
+    NSLog(@"Loading SQLite database at %@",[storeURL path]);
+    
+#ifdef kRESET_DATAFILE_EACH_RUN
+#if kRESET_DATAFILE_EACH_RUN
+    if ([[NSFileManager defaultManager] fileExistsAtPath:[storeURL path]]) {
+        NSLog(@"Re-initializing SQLite database at %@",[storeURL path]);
+
+        NSError *error=nil;
+        if (![[NSFileManager defaultManager] removeItemAtPath:[storeURL path] error:&error]) {
+            NSLog(@"Unable to remove file '%@': %@",[storeURL path],[error localizedDescription]);
+        }
+    }
+#endif
+#endif
+    
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSInMemoryStoreType configuration:nil URL:storeURL options:nil error:&error]) {
+    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
         /*
          Replace this implementation with code to handle the error appropriately.
          
