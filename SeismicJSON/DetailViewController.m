@@ -23,6 +23,7 @@
 @synthesize longitudeLabel;
 @synthesize dateLabel;
 @synthesize urlLabel;
+@synthesize detailItem = _detailItem;
 
 - (void)setDetailItem:(id)newDetailItem
 {
