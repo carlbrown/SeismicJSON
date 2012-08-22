@@ -10,4 +10,6 @@
 
 @interface ActivityIndicatingImageView : UIImageView
 
+@property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
+
 @end

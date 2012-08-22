@@ -9,6 +9,7 @@
 #import "ActivityIndicatingImageView.h"
 
 @implementation ActivityIndicatingImageView
+@synthesize activityIndicator = _activityIndicator;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -17,6 +18,21 @@
         // Initialization code
     }
     return self;
+}
+
+-(void) awakeFromNib {
+    _activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [_activityIndicator setFrame:self.frame];
+    [_activityIndicator setHidesWhenStopped:YES];
+    [self addSubview:_activityIndicator];
+    [_activityIndicator startAnimating];
+}
+
+-(void) setImage:(UIImage *)image {
+    [super setImage:image];
+    if (image) {
+        [self.activityIndicator stopAnimating];
+    }
 }
 
 /*
