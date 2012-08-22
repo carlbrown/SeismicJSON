@@ -105,14 +105,23 @@
     if (!timeFrames) {
         return;
     }
-    UIActionSheet *actionsheet = [[UIActionSheet alloc] initWithTitle:@"Pick TimeFrame" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:nil];
+    UIActionSheet *actionsheet = [[UIActionSheet alloc] initWithTitle:@"Pick TimeFrame" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
     for (NSString *buttonTitle in timeFrames) {
         [actionsheet addButtonWithTitle:buttonTitle];
+    }
+    //Don't put a cancel button on the iPad
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        NSInteger cancelButtonID = [actionsheet addButtonWithTitle:@"Cancel"];
+        [actionsheet setCancelButtonIndex:cancelButtonID];
     }
     [actionsheet showInView:self.view];
 }
 
 -(void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex < 0) {
+        //iPad Cancel
+        return;
+    }
     if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"Cancel"]) {
         return;
     }
@@ -123,9 +132,14 @@
             return;
         }
         //launch the next actionsheet
-        UIActionSheet *actionsheet = [[UIActionSheet alloc] initWithTitle:[actionSheet buttonTitleAtIndex:buttonIndex] delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:nil];
+        UIActionSheet *actionsheet = [[UIActionSheet alloc] initWithTitle:[actionSheet buttonTitleAtIndex:buttonIndex] delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
         for (NSString *buttonTitle in significanceFilters) {
             [actionsheet addButtonWithTitle:buttonTitle];
+        }
+        //Don't put a cancel button on the iPad
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+            NSInteger cancelButtonID = [actionsheet addButtonWithTitle:@"Cancel"];
+            [actionsheet setCancelButtonIndex:cancelButtonID];
         }
         [actionsheet showInView:self.view];
     } else {
