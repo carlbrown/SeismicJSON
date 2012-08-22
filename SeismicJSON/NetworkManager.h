@@ -10,6 +10,8 @@
 
 #import "EarthquakeFetchOperation.h"
 
+@class Reachability;
+
 @interface NetworkManager : NSObject <FetchNotifierDelegate>
 
 + (NetworkManager *)sharedManager;
@@ -19,6 +21,8 @@
 @property (nonatomic, weak) NSManagedObjectContext *mainContext;
 @property (nonatomic, assign, getter = isNetworkOnline) BOOL networkOnline;
 @property (nonatomic, strong, readonly) NSDictionary *urlMap;
+@property (nonatomic, strong) Reachability* hostReach;
+
 
 -(NSURL *) baseURL;
 -(NSURL *) urlForRelativePath:(NSString *) relativePath;

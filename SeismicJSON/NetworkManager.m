@@ -20,6 +20,7 @@ static NetworkManager __strong *sharedManager = nil;
 @synthesize mainContext = _mainContext;
 @synthesize networkOnline = _networkOnline;
 @synthesize urlMap = _urlMap;
+@synthesize hostReach = _hostReach;
 
 + (NetworkManager *)sharedManager {
     static dispatch_once_t pred; dispatch_once(&pred, ^{
@@ -63,6 +64,9 @@ static NetworkManager __strong *sharedManager = nil;
 }
 
 -(void) startMainPageFetch {
+    [self setHostReach:[Reachability reachabilityWithHostName:[self.baseURL host]]];
+    [self.hostReach startNotifier];
+
     [self queuePageFetchForRelativePath:@"/earthquakes/feed/geojson/significant/month"];
 }
 
