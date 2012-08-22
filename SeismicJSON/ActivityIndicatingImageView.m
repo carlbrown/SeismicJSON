@@ -10,6 +10,7 @@
 
 @implementation ActivityIndicatingImageView
 @synthesize activityIndicator = _activityIndicator;
+@synthesize imageFileName = _imageFileName;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -33,6 +34,16 @@
     if (image) {
         [self.activityIndicator stopAnimating];
     }
+}
+
+-(void) setImageFileName:(NSString *)imageFileName {
+    _imageFileName = imageFileName;
+    [[NetworkManager sharedManager] fetchImagewithFilename:imageFileName andNotifyTarget:self];
+    
+}
+
+-(void) imageDidBecomeAvailableAtPath:(NSString *) path {
+    [self setImage:[UIImage imageWithContentsOfFile:path]];
 }
 
 /*

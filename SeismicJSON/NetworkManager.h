@@ -10,6 +10,8 @@
 
 #import "EarthquakeFetchOperation.h"
 
+@protocol ImageFetchDelegate;
+
 @class Reachability;
 
 @interface NetworkManager : NSObject <FetchNotifierDelegate>
@@ -18,10 +20,18 @@
 
 -(void) queuePageFetchForRelativePath:(NSString *) relativePath;
 -(void) startMainPageFetch;
+-(void) fetchImagewithFilename:(NSString *) filename andNotifyTarget:(NSObject <ImageFetchDelegate> *) target;
 
 -(NSArray *) availableTimeFrames;
 -(NSArray *) significanceFiltersForTimeFrame:(NSString *) timeFrame;
 -(NSString *) relativeJSONURLForTimeFrame:(NSString *)timeFrame andSignificance:(NSString *) significance;
+-(NSString *) cachedImageDirectory;
+
+@end
+
+@protocol ImageFetchDelegate <NSObject>
+
+-(void) imageDidBecomeAvailableAtPath:(NSString *) path;
 
 @end
 

@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ActivityIndicatingImageView : UIImageView
+#import "NetworkManager.h"
+
+@interface ActivityIndicatingImageView : UIImageView <ImageFetchDelegate>
 
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
+@property (nonatomic, strong) NSString *imageFileName;
 
 @end

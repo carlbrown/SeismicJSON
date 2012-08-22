@@ -1,5 +1,5 @@
 //
-//  earthquakeFetchOperation.h
+//  EarthquakeFetchOperation.h
 //  SeismicJSON
 //
 //  Created by Carl Brown on 8/21/12.
@@ -7,26 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BaseFetchOperation.h"
 
-@protocol FetchNotifierDelegate;
-
-@interface EarthquakeFetchOperation : NSOperation <NSURLConnectionDataDelegate>
-
-@property (nonatomic, strong) NSURL *urlForJSONData;
+@interface EarthquakeFetchOperation : BaseFetchOperation
 @property (nonatomic, weak) NSManagedObjectContext *mainContext;
-@property (nonatomic, strong) NSMutableData *jsonData;
-@property (nonatomic, assign, getter=isDone) BOOL done;
-@property (nonatomic, assign) NSURLConnection *connection;
-@property (nonatomic, retain) NSHTTPURLResponse *response;
-
-@property (nonatomic, weak) NSObject<FetchNotifierDelegate> *delegate;
-
--(void) finish;
 
 @end
 
-@protocol FetchNotifierDelegate <NSObject>
--(void) fetchDidFailWithError:(NSError *) error;
--(void) incrementActiveFetches;
--(void) decrementActiveFetches;
-@end

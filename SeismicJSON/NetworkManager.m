@@ -9,6 +9,7 @@
 #import "NetworkManager.h"
 #import "AppDelegate.h"
 #import "EarthquakeFetchOperation.h"
+#import "ImageFetchOperation.h"
 #import "Reachability.h"
 
 static NetworkManager __strong *sharedManager = nil;
@@ -21,6 +22,7 @@ static NetworkManager __strong *sharedManager = nil;
 @property (nonatomic, strong, readonly) NSDictionary *urlMap;
 @property (nonatomic, strong) Reachability *hostReach;
 @property (atomic, readwrite) NSUInteger activeFetches;
+@property (nonatomic, strong, readonly) NSString *cachedImageDirectory;
 
 
 -(NSURL *) baseURL;
@@ -36,6 +38,7 @@ static NetworkManager __strong *sharedManager = nil;
 @synthesize networkOnline = _networkOnline;
 @synthesize urlMap = _urlMap;
 @synthesize hostReach = _hostReach;
+@synthesize cachedImageDirectory = _cachedImageDirectory;
 
 + (NetworkManager *)sharedManager {
     static dispatch_once_t pred; dispatch_once(&pred, ^{
@@ -71,9 +74,14 @@ static NetworkManager __strong *sharedManager = nil;
     return [NSURL URLWithString:relativePath relativeToURL:self.baseURL];
 }
 
+-(NSURL *) imageURLForImageFileName:(NSString *) imageFilename {
+    NSString *imageRelativePath = [@"/images/globes/" stringByAppendingPathComponent:imageFilename];
+    return [NSURL URLWithString:imageRelativePath relativeToURL:self.baseURL];
+}
+
 -(void) queuePageFetchForRelativePath:(NSString *) relativePath {
     EarthquakeFetchOperation *earthquakeFetchOperation = [[EarthquakeFetchOperation alloc] init];
-    [earthquakeFetchOperation setUrlForJSONData:[self urlForRelativePath:relativePath]];
+    [earthquakeFetchOperation setUrlToFetch:[self urlForRelativePath:relativePath]];
     [earthquakeFetchOperation setMainContext:self.mainContext];
     [earthquakeFetchOperation setDelegate:self];
     [self.fetchQueue addOperation:earthquakeFetchOperation];
@@ -147,6 +155,29 @@ static NetworkManager __strong *sharedManager = nil;
     }
     self.activeFetches=0;
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+}
+
+-(NSString *) cachedImageDirectory {
+    if (_cachedImageDirectory==nil) {
+        _cachedImageDirectory = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"cachedImages"];
+        BOOL isDirectory=NO;
+        if (![[NSFileManager defaultManager] fileExistsAtPath:_cachedImageDirectory isDirectory:&isDirectory]) {
+            NSError *error=nil;
+            if (![[NSFileManager defaultManager] createDirectoryAtPath:_cachedImageDirectory withIntermediateDirectories:YES attributes:nil error:&error]) {
+                NSLog(@"Error creating directory '%@':%@",_cachedImageDirectory,[error localizedDescription]);
+            }
+        }
+    }
+    
+    return _cachedImageDirectory;
+}
+
+-(void) fetchImagewithFilename:(NSString *) filename andNotifyTarget:(NSObject <ImageFetchDelegate> *) target {
+    ImageFetchOperation *imageFetchOperation = [[ImageFetchOperation alloc] init];
+    [imageFetchOperation setUrlToFetch:[self imageURLForImageFileName:filename]];
+    [imageFetchOperation setNotificationTarget:target];
+    [self.fetchQueue addOperation:imageFetchOperation];
+
 }
 
 @end

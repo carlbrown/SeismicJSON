@@ -12,6 +12,8 @@
 #import "Earthquake.h"
 #import "NetworkManager.h"
 #import "EarthQuakeTableViewCell.h"
+#import "Earthquake+ThumbnailURL.h"
+#import "ActivityIndicatingImageView.h"
 
 @interface MasterViewController ()
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
@@ -272,6 +274,7 @@
     cell.locationLabel.text = [object location];
     cell.magnitudeLabel.text = [[object magnitude] description];
     cell.dateLabel.text = [[object date] description];
+    [cell.globeThumbnailImageView setImageFileName:[object thumbnailFilenameString]];
 }
 
 @end
