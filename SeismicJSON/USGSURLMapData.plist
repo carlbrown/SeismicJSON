@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Past Hour</key>
+	<dict>
+		<key>M1+ earthquakes</key>
+		<string>/earthquakes/feed/geojson/1.0/hour</string>
+		<key>All earthquakes</key>
+		<string>/earthquakes/feed/geojson/all/hour</string>
+	</dict>
+	<key>Past Day</key>
+	<dict>
+		<key>Significant earthquakes</key>
+		<string>/earthquakes/feed/geojson/significant/day</string>
+		<key>M2.5+ earthquakes</key>
+		<string>/earthquakes/feed/geojson/2.5/day</string>
+		<key>M1+ earthquakes</key>
+		<string>/earthquakes/feed/geojson/1.0/day</string>
+		<key>All earthquakes</key>
+		<string>/earthquakes/feed/geojson/all/day</string>
+	</dict>
+	<key>Past 7 Days</key>
+	<dict>
+		<key>Significant earthquakes</key>
+		<string>/earthquakes/feed/geojson/significant/week</string>
+		<key>M4.5+ earthquakes</key>
+		<string>/earthquakes/feed/geojson/4.5/week</string>
+		<key>M2.5+ earthquakes</key>
+		<string>/earthquakes/feed/geojson/2.5/week</string>
+		<key>M1+ earthquakes</key>
+		<string>/earthquakes/feed/geojson/1.0/week</string>
+	</dict>
+	<key>Past 30 Days</key>
+	<dict>
+		<key>Significant earthquakes</key>
+		<string>/earthquakes/feed/geojson/significant/month</string>
+		<key>M6.5+ earthquakes</key>
+		<string>/earthquakes/feed/geojson/6.5/month</string>
+		<key>M4.5+ earthquakes</key>
+		<string>/earthquakes/feed/geojson/4.5/month</string>
+		<key>M2.5+ earthquakes</key>
+		<string>/earthquakes/feed/geojson/2.5/month</string>
+	</dict>
+</dict>
+</plist>

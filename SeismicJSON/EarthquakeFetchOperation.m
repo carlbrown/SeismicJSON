@@ -17,6 +17,7 @@
 @synthesize done = _done;
 @synthesize connection = _connection;
 @synthesize response = _response;
+@synthesize delegate = _delegate;
 
 - (void)main {
     if ([self isCancelled]) {
@@ -68,6 +69,9 @@
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     NSLog(@"Error connecting: %@",[error localizedDescription]);
+    if (self.delegate) {
+        [self.delegate fetchDidFailWithError:error];
+    }
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {

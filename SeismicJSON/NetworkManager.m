@@ -19,6 +19,7 @@ static NetworkManager __strong *sharedManager = nil;
 @synthesize baseURLString = _baseURLString;
 @synthesize mainContext = _mainContext;
 @synthesize networkOnline = _networkOnline;
+@synthesize urlMap = _urlMap;
 
 + (NetworkManager *)sharedManager {
     static dispatch_once_t pred; dispatch_once(&pred, ^{
@@ -29,7 +30,6 @@ static NetworkManager __strong *sharedManager = nil;
         //Assume the network is up to start with
         [sharedManager setNetworkOnline:YES];
         [[NSNotificationCenter defaultCenter] addObserver:sharedManager selector: @selector(reachabilityChanged:) name: kReachabilityChangedNotification object: nil];
-
     });
     return sharedManager;
 }
@@ -55,14 +55,44 @@ static NetworkManager __strong *sharedManager = nil;
 }
 
 -(void) queuePageFetchForRelativePath:(NSString *) relativePath {
-    EarthquakeFetchOperation *mainEFO = [[EarthquakeFetchOperation alloc] init];
-    [mainEFO setUrlForJSONData:[self urlForRelativePath:relativePath]];
-    [mainEFO setMainContext:self.mainContext];
-    [self.fetchQueue addOperation:mainEFO];
+    EarthquakeFetchOperation *earthquakeFetchOperation = [[EarthquakeFetchOperation alloc] init];
+    [earthquakeFetchOperation setUrlForJSONData:[self urlForRelativePath:relativePath]];
+    [earthquakeFetchOperation setMainContext:self.mainContext];
+    [earthquakeFetchOperation setDelegate:self];
+    [self.fetchQueue addOperation:earthquakeFetchOperation];
 }
 
 -(void) startMainPageFetch {
     [self queuePageFetchForRelativePath:@"/earthquakes/feed/geojson/significant/month"];
+}
+
+-(NSDictionary *) urlMap {
+    if (_urlMap==nil) {
+        _urlMap = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"USGSURLMapData" ofType:@"plist"]];
+    }
+    return _urlMap;
+}
+
+-(NSArray *) availableTimeFrames {
+    return [self.urlMap allKeys];
+}
+
+-(NSArray *) significanceFiltersForTimeFrame:(NSString *) timeFrame {
+    return [[self.urlMap objectForKey:timeFrame] allKeys];
+}
+
+-(NSString *) relativeJSONURLForTimeFrame:(NSString *)timeFrame andSignificance:(NSString *) significance {
+    return [[self.urlMap objectForKey:timeFrame] objectForKey:significance];
+}
+
+-(void) fetchDidFailWithError:(NSError *) error {
+    //Don't give the user an error if the network is already offline
+    if (self.isNetworkOnline) {
+        UIAlertView *networkAlertView = [[UIAlertView alloc] initWithTitle:[error localizedDescription] message:[error localizedRecoverySuggestion] delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [networkAlertView show];
+        [self setNetworkOnline:NO];
+    }
+    
 }
 
 @end

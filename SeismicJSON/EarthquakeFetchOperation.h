@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol FetchNotifierDelegate;
+
 @interface EarthquakeFetchOperation : NSOperation <NSURLConnectionDataDelegate>
 
 @property (nonatomic, strong) NSURL *urlForJSONData;
@@ -17,6 +19,12 @@
 @property (nonatomic, assign) NSURLConnection *connection;
 @property (nonatomic, retain) NSHTTPURLResponse *response;
 
+@property (nonatomic, weak) NSObject<FetchNotifierDelegate> *delegate;
+
 -(void) finish;
 
+@end
+
+@protocol FetchNotifierDelegate <NSObject>
+-(void) fetchDidFailWithError:(NSError *) error;
 @end

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D3D3605215E47F49008B941A /* USGSURLMapData.plist in Resources */ = {isa = PBXBuildFile; fileRef = D3D3605115E47F49008B941A /* USGSURLMapData.plist */; };
 		D3E420B615E41D97000C88B1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E420B515E41D97000C88B1 /* UIKit.framework */; };
 		D3E420B815E41D97000C88B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E420B715E41D97000C88B1 /* Foundation.framework */; };
 		D3E420BA15E41D97000C88B1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E420B915E41D97000C88B1 /* CoreGraphics.framework */; };
@@ -46,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D3D3605115E47F49008B941A /* USGSURLMapData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = USGSURLMapData.plist; sourceTree = "<group>"; };
 		D3E420B115E41D97000C88B1 /* SeismicJSON.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeismicJSON.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3E420B515E41D97000C88B1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D3E420B715E41D97000C88B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -167,6 +169,7 @@
 				D3E420C015E41D97000C88B1 /* InfoPlist.strings */,
 				D3E420C315E41D97000C88B1 /* main.m */,
 				D3E420C515E41D97000C88B1 /* SeismicJSON-Prefix.pch */,
+				D3D3605115E47F49008B941A /* USGSURLMapData.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				D3E420DA15E41D97000C88B1 /* DetailViewController_iPhone.xib in Resources */,
 				D3E420DD15E41D97000C88B1 /* DetailViewController_iPad.xib in Resources */,
 				D3E420FD15E41EFE000C88B1 /* README.md in Resources */,
+				D3D3605215E47F49008B941A /* USGSURLMapData.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
