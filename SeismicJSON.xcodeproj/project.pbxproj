@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D353B7C115E491EC00FF0E5D /* EarthQuakeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D353B7BF15E491EC00FF0E5D /* EarthQuakeTableViewCell.xib */; };
+		D353B7C515E4924C00FF0E5D /* EarthQuakeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D353B7C415E4924C00FF0E5D /* EarthQuakeTableViewCell.m */; };
+		D353B7C915E4933800FF0E5D /* ActivityIndicatingImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D353B7C815E4933800FF0E5D /* ActivityIndicatingImageView.m */; };
 		D3D3605215E47F49008B941A /* USGSURLMapData.plist in Resources */ = {isa = PBXBuildFile; fileRef = D3D3605115E47F49008B941A /* USGSURLMapData.plist */; };
 		D3E420B615E41D97000C88B1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E420B515E41D97000C88B1 /* UIKit.framework */; };
 		D3E420B815E41D97000C88B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E420B715E41D97000C88B1 /* Foundation.framework */; };
@@ -47,6 +50,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D353B7C015E491EC00FF0E5D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/EarthQuakeTableViewCell.xib; sourceTree = "<group>"; };
+		D353B7C315E4924C00FF0E5D /* EarthQuakeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EarthQuakeTableViewCell.h; sourceTree = "<group>"; };
+		D353B7C415E4924C00FF0E5D /* EarthQuakeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EarthQuakeTableViewCell.m; sourceTree = "<group>"; };
+		D353B7C715E4933800FF0E5D /* ActivityIndicatingImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityIndicatingImageView.h; sourceTree = "<group>"; };
+		D353B7C815E4933800FF0E5D /* ActivityIndicatingImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityIndicatingImageView.m; sourceTree = "<group>"; };
 		D3D3605115E47F49008B941A /* USGSURLMapData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = USGSURLMapData.plist; sourceTree = "<group>"; };
 		D3E420B115E41D97000C88B1 /* SeismicJSON.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeismicJSON.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3E420B515E41D97000C88B1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -113,6 +121,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D353B7C615E492EF00FF0E5D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D353B7C715E4933800FF0E5D /* ActivityIndicatingImageView.h */,
+				D353B7C815E4933800FF0E5D /* ActivityIndicatingImageView.m */,
+				D353B7C315E4924C00FF0E5D /* EarthQuakeTableViewCell.h */,
+				D353B7C415E4924C00FF0E5D /* EarthQuakeTableViewCell.m */,
+				D3E4211B15E46FFF000C88B1 /* NIBs */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		D3E420A615E41D97000C88B1 = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +174,7 @@
 				D3E4212215E470A0000C88B1 /* NetworkManager.h */,
 				D3E4212315E470A0000C88B1 /* NetworkManager.m */,
 				D3E4211C15E47014000C88B1 /* ViewControllers */,
+				D353B7C615E492EF00FF0E5D /* Views */,
 				D3E4210515E42385000C88B1 /* Operations */,
 				D3E420FE15E420A5000C88B1 /* Models */,
 				D3E420BE15E41D97000C88B1 /* Supporting Files */,
@@ -219,6 +240,7 @@
 				D3E420D515E41D97000C88B1 /* MasterViewController_iPad.xib */,
 				D3E420D815E41D97000C88B1 /* DetailViewController_iPhone.xib */,
 				D3E420DB15E41D97000C88B1 /* DetailViewController_iPad.xib */,
+				D353B7BF15E491EC00FF0E5D /* EarthQuakeTableViewCell.xib */,
 			);
 			name = NIBs;
 			sourceTree = "<group>";
@@ -226,7 +248,6 @@
 		D3E4211C15E47014000C88B1 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				D3E4211B15E46FFF000C88B1 /* NIBs */,
 				D3E420CC15E41D97000C88B1 /* MasterViewController.h */,
 				D3E420CD15E41D97000C88B1 /* MasterViewController.m */,
 				D3E420CF15E41D97000C88B1 /* DetailViewController.h */,
@@ -330,6 +351,7 @@
 				D3E420DD15E41D97000C88B1 /* DetailViewController_iPad.xib in Resources */,
 				D3E420FD15E41EFE000C88B1 /* README.md in Resources */,
 				D3D3605215E47F49008B941A /* USGSURLMapData.plist in Resources */,
+				D353B7C115E491EC00FF0E5D /* EarthQuakeTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,6 +395,8 @@
 				D3E4210415E4237D000C88B1 /* EarthquakeFetchOperation.m in Sources */,
 				D3E4212115E47078000C88B1 /* Reachability.m in Sources */,
 				D3E4212415E470A0000C88B1 /* NetworkManager.m in Sources */,
+				D353B7C515E4924C00FF0E5D /* EarthQuakeTableViewCell.m in Sources */,
+				D353B7C915E4933800FF0E5D /* ActivityIndicatingImageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,6 +419,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		D353B7BF15E491EC00FF0E5D /* EarthQuakeTableViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D353B7C015E491EC00FF0E5D /* en */,
+			);
+			name = EarthQuakeTableViewCell.xib;
+			sourceTree = "<group>";
+		};
 		D3E420C015E41D97000C88B1 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

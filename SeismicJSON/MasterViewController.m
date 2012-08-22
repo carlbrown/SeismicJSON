@@ -11,6 +11,7 @@
 #import "DetailViewController.h"
 #import "Earthquake.h"
 #import "NetworkManager.h"
+#import "EarthQuakeTableViewCell.h"
 
 @interface MasterViewController ()
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
@@ -110,16 +111,12 @@
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"EarthQuakeTableViewCell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        }
-    }
-
+    [tableView registerNib:[UINib nibWithNibName:@"EarthQuakeTableViewCell" bundle:nil] forCellReuseIdentifier:CellIdentifier];
+    
+    EarthQuakeTableViewCell *cell = (EarthQuakeTableViewCell *) [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
     [self configureCell:cell atIndexPath:indexPath];
     return cell;
 }
@@ -164,6 +161,10 @@
     } else {
         self.detailViewController.detailItem = (Earthquake *) object;
     }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 77.0f;
 }
 
 #pragma mark - Fetched results controller
@@ -265,10 +266,12 @@
 }
  */
 
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
+- (void)configureCell:(EarthQuakeTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-    NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = [[object valueForKey:@"location"] description];
+    Earthquake *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.locationLabel.text = [object location];
+    cell.magnitudeLabel.text = [[object magnitude] description];
+    cell.dateLabel.text = [[object date] description];
 }
 
 @end
