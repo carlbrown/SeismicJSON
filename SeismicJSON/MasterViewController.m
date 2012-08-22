@@ -21,6 +21,8 @@
 @end
 
 @implementation MasterViewController
+@synthesize tableView = _tableView;
+@synthesize filterBar = _filterBar;
 
 @synthesize dateFormatter = _dateFormatter;
 
@@ -30,7 +32,6 @@
     if (self) {
         self.title = NSLocalizedString(@"Master", @"Master");
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-            self.clearsSelectionOnViewWillAppear = NO;
             self.contentSizeForViewInPopover = CGSizeMake(320.0, 600.0);
         }
     }
@@ -221,7 +222,8 @@
     [fetchRequest setFetchBatchSize:20];
     
     // Edit the sort key as appropriate.
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO];
+    NSString *sortKey = [[self.filterBar titleForSegmentAtIndex:[self.filterBar selectedSegmentIndex]] lowercaseString];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:sortKey ascending:NO];
     NSArray *sortDescriptors = @[sortDescriptor];
     
     [fetchRequest setSortDescriptors:sortDescriptors];
@@ -312,4 +314,14 @@
     [cell.globeThumbnailImageView setImageFileName:[object thumbnailFilenameString]];
 }
 
+- (void)viewDidUnload {
+    [self setFilterBar:nil];
+    [self setTableView:nil];
+    [super viewDidUnload];
+}
+- (IBAction)filterDidChange:(id)sender {
+    self.fetchedResultsController.delegate = nil;
+    self.fetchedResultsController=nil;
+    [self.tableView reloadData];
+}
 @end
