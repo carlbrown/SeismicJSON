@@ -11,6 +11,7 @@
 @class Earthquake;
 
 @interface DetailViewController : UIViewController <UISplitViewControllerDelegate>
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
 
 @property (strong, nonatomic) Earthquake *detailItem;
 

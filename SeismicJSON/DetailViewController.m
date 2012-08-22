@@ -17,6 +17,7 @@
 @implementation DetailViewController
 
 #pragma mark - Managing the detail item
+@synthesize webView;
 @synthesize magnitudeLabel;
 @synthesize locationLabel;
 @synthesize latitudeLabel;
@@ -51,6 +52,8 @@
         [self.latitudeLabel setText:[NSString stringWithFormat:@"Latitude: %@",self.detailItem.latitude]];
         [self.longitudeLabel setText:[NSString stringWithFormat:@"Longitude: %@",self.detailItem.longitude]];
         [self.urlLabel setText:[NSString stringWithFormat:@"URL: %@",self.detailItem.webLinkToUSGS]];
+        NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:self.detailItem.webLinkToUSGS]];
+        [self.webView loadRequest:req];
     }
 }
 
@@ -108,6 +111,7 @@
     [self setLongitudeLabel:nil];
     [self setDateLabel:nil];
     [self setUrlLabel:nil];
+    [self setWebView:nil];
     [super viewDidUnload];
 }
 @end
