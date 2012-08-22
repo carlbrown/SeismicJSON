@@ -336,7 +336,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0450;
-				ORGANIZATIONNAME = PDAgent;
+				ORGANIZATIONNAME = "PDAgent, LLC";
 			};
 			buildConfigurationList = D3E420AB15E41D97000C88B1 /* Build configuration list for PBXProject "SeismicJSON" */;
 			compatibilityVersion = "Xcode 3.2";
