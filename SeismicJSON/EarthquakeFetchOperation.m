@@ -82,11 +82,16 @@
         if ([arrayElement isKindOfClass:[NSDictionary class]]) {
             NSDictionary *eventDict = (NSDictionary *) arrayElement;
             
-            
+            NSNumber *eventLong;
+            NSNumber *eventLat;
+            NSArray *coordArray = [eventDict valueForKeyPath:@"geometry.coordinates"];
+            if ([coordArray count]>=2) {
+                eventLong = [NSNumber numberWithDouble:[[coordArray objectAtIndex:0] doubleValue]];
+                eventLat =[NSNumber numberWithDouble:[[coordArray objectAtIndex:1] doubleValue]];
+            }
+
             NSString *eventLocation = [eventDict valueForKeyPath:@"properties.place"];
             NSDate *eventDate = [NSDate dateWithTimeIntervalSince1970:[[eventDict valueForKeyPath:@"properties.time"] doubleValue]];
-            NSNumber *eventLong = [NSNumber numberWithDouble:[[[eventDict valueForKeyPath:@"geometry.coordinates"] objectAtIndex:0] doubleValue]];
-            NSNumber *eventLat =[NSNumber numberWithDouble:[[[eventDict valueForKeyPath:@"geometry.coordinates"] objectAtIndex:1] doubleValue]];
             NSNumber *eventMagnitude = [NSNumber numberWithFloat:[[eventDict valueForKeyPath:@"properties.mag"] floatValue]];
             NSString *eventWebPath = [@"http://earthquake.usgs.gov" stringByAppendingPathComponent:[eventDict valueForKeyPath:@"properties.url"]];
             
