@@ -135,7 +135,7 @@ static NetworkManager __strong *sharedManager = nil;
 -(void) fetchDidFailWithError:(NSError *) error {
     //Don't give the user an error if the network is already offline
     if (self.isNetworkOnline) {
-        UIAlertView *networkAlertView = [[UIAlertView alloc] initWithTitle:[error localizedDescription] message:[error localizedRecoverySuggestion] delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        UIAlertView *networkAlertView = [[UIAlertView alloc] initWithTitle:[error localizedDescription] message:[[error userInfo] description] delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
         [networkAlertView show];
         [self setNetworkOnline:NO];
     }
