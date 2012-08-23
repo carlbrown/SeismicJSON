@@ -1,15 +1,15 @@
 //
-//  EarthQuakeTableViewCell.m
+//  EarthquakeTableViewCell.m
 //  SeismicJSON
 //
 //  Created by Carl Brown on 8/21/12.
 //  Copyright (c) 2012 PDAgent, LLC. Released under MIT license ( http://opensource.org/licenses/MIT ).
 //
 
-#import "EarthQuakeTableViewCell.h"
+#import "EarthquakeTableViewCell.h"
 #import "ActivityIndicatingImageView.h"
 
-@implementation EarthQuakeTableViewCell
+@implementation EarthquakeTableViewCell
 @synthesize magnitudeLabel;
 @synthesize locationLabel;
 @synthesize dateLabel;

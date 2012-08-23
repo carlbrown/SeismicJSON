@@ -1,5 +1,5 @@
 //
-//  EarthQuakeTableViewCell.h
+//  EarthquakeTableViewCell.h
 //  SeismicJSON
 //
 //  Created by Carl Brown on 8/21/12.
@@ -10,7 +10,7 @@
 
 @class ActivityIndicatingImageView;
 
-@interface EarthQuakeTableViewCell : UITableViewCell
+@interface EarthquakeTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *magnitudeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;

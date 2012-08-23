@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D353B7C115E491EC00FF0E5D /* EarthQuakeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D353B7BF15E491EC00FF0E5D /* EarthQuakeTableViewCell.xib */; };
-		D353B7C515E4924C00FF0E5D /* EarthQuakeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D353B7C415E4924C00FF0E5D /* EarthQuakeTableViewCell.m */; };
+		D353B7C115E491EC00FF0E5D /* EarthquakeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D353B7BF15E491EC00FF0E5D /* EarthquakeTableViewCell.xib */; };
+		D353B7C515E4924C00FF0E5D /* EarthquakeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D353B7C415E4924C00FF0E5D /* EarthquakeTableViewCell.m */; };
 		D353B7C915E4933800FF0E5D /* ActivityIndicatingImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D353B7C815E4933800FF0E5D /* ActivityIndicatingImageView.m */; };
 		D353B7D015E49A3F00FF0E5D /* Earthquake+ThumbnailURL.m in Sources */ = {isa = PBXBuildFile; fileRef = D353B7CF15E49A3F00FF0E5D /* Earthquake+ThumbnailURL.m */; };
 		D353B7F515E4A07E00FF0E5D /* BaseFetchOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D353B7F415E4A07E00FF0E5D /* BaseFetchOperation.m */; };
@@ -53,9 +53,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		D353B7C015E491EC00FF0E5D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/EarthQuakeTableViewCell.xib; sourceTree = "<group>"; };
-		D353B7C315E4924C00FF0E5D /* EarthQuakeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EarthQuakeTableViewCell.h; sourceTree = "<group>"; };
-		D353B7C415E4924C00FF0E5D /* EarthQuakeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EarthQuakeTableViewCell.m; sourceTree = "<group>"; };
+		D353B7C015E491EC00FF0E5D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/EarthquakeTableViewCell.xib; sourceTree = "<group>"; };
+		D353B7C315E4924C00FF0E5D /* EarthquakeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EarthquakeTableViewCell.h; sourceTree = "<group>"; };
+		D353B7C415E4924C00FF0E5D /* EarthquakeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EarthquakeTableViewCell.m; sourceTree = "<group>"; };
 		D353B7C715E4933800FF0E5D /* ActivityIndicatingImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityIndicatingImageView.h; sourceTree = "<group>"; };
 		D353B7C815E4933800FF0E5D /* ActivityIndicatingImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityIndicatingImageView.m; sourceTree = "<group>"; };
 		D353B7CE15E49A3F00FF0E5D /* Earthquake+ThumbnailURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Earthquake+ThumbnailURL.h"; sourceTree = "<group>"; };
@@ -136,8 +136,8 @@
 			children = (
 				D353B7C715E4933800FF0E5D /* ActivityIndicatingImageView.h */,
 				D353B7C815E4933800FF0E5D /* ActivityIndicatingImageView.m */,
-				D353B7C315E4924C00FF0E5D /* EarthQuakeTableViewCell.h */,
-				D353B7C415E4924C00FF0E5D /* EarthQuakeTableViewCell.m */,
+				D353B7C315E4924C00FF0E5D /* EarthquakeTableViewCell.h */,
+				D353B7C415E4924C00FF0E5D /* EarthquakeTableViewCell.m */,
 				D3E4211B15E46FFF000C88B1 /* NIBs */,
 			);
 			name = Views;
@@ -257,7 +257,7 @@
 				D3E420D515E41D97000C88B1 /* MasterViewController_iPad.xib */,
 				D3E420D815E41D97000C88B1 /* DetailViewController_iPhone.xib */,
 				D3E420DB15E41D97000C88B1 /* DetailViewController_iPad.xib */,
-				D353B7BF15E491EC00FF0E5D /* EarthQuakeTableViewCell.xib */,
+				D353B7BF15E491EC00FF0E5D /* EarthquakeTableViewCell.xib */,
 			);
 			name = NIBs;
 			sourceTree = "<group>";
@@ -368,7 +368,7 @@
 				D3E420DD15E41D97000C88B1 /* DetailViewController_iPad.xib in Resources */,
 				D3E420FD15E41EFE000C88B1 /* README.md in Resources */,
 				D3D3605215E47F49008B941A /* USGSURLMapData.plist in Resources */,
-				D353B7C115E491EC00FF0E5D /* EarthQuakeTableViewCell.xib in Resources */,
+				D353B7C115E491EC00FF0E5D /* EarthquakeTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,7 +412,7 @@
 				D3E4210415E4237D000C88B1 /* EarthquakeFetchOperation.m in Sources */,
 				D3E4212115E47078000C88B1 /* Reachability.m in Sources */,
 				D3E4212415E470A0000C88B1 /* NetworkManager.m in Sources */,
-				D353B7C515E4924C00FF0E5D /* EarthQuakeTableViewCell.m in Sources */,
+				D353B7C515E4924C00FF0E5D /* EarthquakeTableViewCell.m in Sources */,
 				D353B7C915E4933800FF0E5D /* ActivityIndicatingImageView.m in Sources */,
 				D353B7D015E49A3F00FF0E5D /* Earthquake+ThumbnailURL.m in Sources */,
 				D353B7F515E4A07E00FF0E5D /* BaseFetchOperation.m in Sources */,
@@ -439,12 +439,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		D353B7BF15E491EC00FF0E5D /* EarthQuakeTableViewCell.xib */ = {
+		D353B7BF15E491EC00FF0E5D /* EarthquakeTableViewCell.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				D353B7C015E491EC00FF0E5D /* en */,
 			);
-			name = EarthQuakeTableViewCell.xib;
+			name = EarthquakeTableViewCell.xib;
 			sourceTree = "<group>";
 		};
 		D3E420C015E41D97000C88B1 /* InfoPlist.strings */ = {

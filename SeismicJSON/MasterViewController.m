@@ -10,7 +10,7 @@
 
 #import "DetailViewController.h"
 #import "Earthquake.h"
-#import "EarthQuakeTableViewCell.h"
+#import "EarthquakeTableViewCell.h"
 #import "Earthquake+ThumbnailURL.h"
 #import "ActivityIndicatingImageView.h"
 #import "NotificationOrParentContext.h"
@@ -171,11 +171,11 @@
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"EarthQuakeTableViewCell";
+    static NSString *CellIdentifier = @"EarthquakeTableViewCell";
     
-    [tableView registerNib:[UINib nibWithNibName:@"EarthQuakeTableViewCell" bundle:nil] forCellReuseIdentifier:CellIdentifier];
+    [tableView registerNib:[UINib nibWithNibName:@"EarthquakeTableViewCell" bundle:nil] forCellReuseIdentifier:CellIdentifier];
     
-    EarthQuakeTableViewCell *cell = (EarthQuakeTableViewCell *) [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    EarthquakeTableViewCell *cell = (EarthquakeTableViewCell *) [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     [self configureCell:cell atIndexPath:indexPath];
     return cell;
@@ -327,7 +327,7 @@
 }
  */
 
-- (void)configureCell:(EarthQuakeTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
+- (void)configureCell:(EarthquakeTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     Earthquake *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.locationLabel.text = [object location];
