@@ -53,6 +53,9 @@
                     
                     NSArray *events = [jsonDict objectForKey:@"features"];
                     
+                    //Keep track of if we need to save or not
+                    BOOL foundNewObject=NO;
+                    
                     for (NSObject *arrayElement in events) {
                         
                         if ([arrayElement isKindOfClass:[NSDictionary class]]) {
@@ -87,30 +90,35 @@
                                 [newManagedObject setValue:eventLong forKey:@"longitude"];
                                 [newManagedObject setValue:eventMagnitude forKey:@"magnitude"];
                                 [newManagedObject setValue:eventWebPath forKey:@"webLinkToUSGS"];
+                                
+                                foundNewObject=YES; //remember we need to save now
                             }
                             
                         }
                     }
                     
-                    // Save the context.
-                    error = nil;
-                    if (![context save:&error]) {
-                        // Replace this implementation with code to handle the error appropriately.
-                        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
-                        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-                        abort();
-                    }
-#if kUSE_PARENT_CONTEXTS_FOR_CONTEXT_MERGE
-                    dispatch_sync(dispatch_get_main_queue(), ^{
-                        NSError *error = nil;
-                        if (![self.mainContext save:&error]) {
+                    if (foundNewObject) {
+                        
+                        // Save the context.
+                        error = nil;
+                        if (![context save:&error]) {
                             // Replace this implementation with code to handle the error appropriately.
                             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
                             NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
                             abort();
                         }
-                    });
+#if kUSE_PARENT_CONTEXTS_FOR_CONTEXT_MERGE
+                        dispatch_sync(dispatch_get_main_queue(), ^{
+                            NSError *error = nil;
+                            if (![self.mainContext save:&error]) {
+                                // Replace this implementation with code to handle the error appropriately.
+                                // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
+                                NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+                                abort();
+                            }
+                        });
 #endif
+                    }
                 }
             }
         }
