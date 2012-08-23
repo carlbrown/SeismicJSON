@@ -95,6 +95,7 @@
             NSNumber *eventMagnitude = [NSNumber numberWithFloat:[[eventDict valueForKeyPath:@"properties.mag"] floatValue]];
             NSString *eventWebPath = [@"http://earthquake.usgs.gov" stringByAppendingPathComponent:[eventDict valueForKeyPath:@"properties.url"]];
             
+            //Now, check in Core Data to see if we already have recorded this event
             NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:NSStringFromClass([Earthquake class])];
             [fetchRequest setFetchLimit:1];
             NSPredicate *eventInfo = [NSPredicate predicateWithFormat:@"location = %@ AND date = %@",
@@ -105,7 +106,9 @@
             NSArray *existingEventsMatchingThisOne = [context executeFetchRequest:fetchRequest error:&fetchError];
             if (existingEventsMatchingThisOne==nil) {
                 NSLog(@"Error checking for existing record: %@",[fetchError localizedDescription]);
-            } else if ([existingEventsMatchingThisOne count]==0) {
+            } else if ([existingEventsMatchingThisOne count]>0) {
+                NSLog(@"Already had a copy of Event at %@. Not saving duplicate.",eventLocation);
+            } else {
                 
                 //Didn't find one already, make a new one
                 NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([Earthquake class]) inManagedObjectContext:context];
@@ -117,9 +120,9 @@
                 [newManagedObject setValue:eventMagnitude forKey:@"magnitude"];
                 [newManagedObject setValue:eventWebPath forKey:@"webLinkToUSGS"];
                 
-                foundNewObject=YES; //remember we need to save now
+                //Now remember that we are going to need to save
+                foundNewObject=YES; 
             }
-            
         }
     }
     
