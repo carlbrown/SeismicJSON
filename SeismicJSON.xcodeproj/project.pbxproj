@@ -13,6 +13,10 @@
 		D353B7D015E49A3F00FF0E5D /* Earthquake+ThumbnailURL.m in Sources */ = {isa = PBXBuildFile; fileRef = D353B7CF15E49A3F00FF0E5D /* Earthquake+ThumbnailURL.m */; };
 		D353B7F515E4A07E00FF0E5D /* BaseFetchOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D353B7F415E4A07E00FF0E5D /* BaseFetchOperation.m */; };
 		D353B7F815E4A11300FF0E5D /* ImageFetchOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D353B7F715E4A11300FF0E5D /* ImageFetchOperation.m */; };
+		D3B4C73F15EBA4DF0012F712 /* Icon-iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = D3B4C73B15EBA4DF0012F712 /* Icon-iPad.png */; };
+		D3B4C74015EBA4DF0012F712 /* Icon-iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3B4C73C15EBA4DF0012F712 /* Icon-iPad@2x.png */; };
+		D3B4C74115EBA4DF0012F712 /* Icon-iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = D3B4C73D15EBA4DF0012F712 /* Icon-iPhone.png */; };
+		D3B4C74215EBA4DF0012F712 /* Icon-iPhone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3B4C73E15EBA4DF0012F712 /* Icon-iPhone@2x.png */; };
 		D3D3605215E47F49008B941A /* USGSURLMapData.plist in Resources */ = {isa = PBXBuildFile; fileRef = D3D3605115E47F49008B941A /* USGSURLMapData.plist */; };
 		D3E420B615E41D97000C88B1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E420B515E41D97000C88B1 /* UIKit.framework */; };
 		D3E420B815E41D97000C88B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E420B715E41D97000C88B1 /* Foundation.framework */; };
@@ -65,6 +69,10 @@
 		D353B7F615E4A11300FF0E5D /* ImageFetchOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageFetchOperation.h; sourceTree = "<group>"; };
 		D353B7F715E4A11300FF0E5D /* ImageFetchOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageFetchOperation.m; sourceTree = "<group>"; };
 		D353B7F915E4B80900FF0E5D /* NotificationOrParentContext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationOrParentContext.h; sourceTree = "<group>"; };
+		D3B4C73B15EBA4DF0012F712 /* Icon-iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-iPad.png"; path = "ArtWork/Icon-iPad.png"; sourceTree = SOURCE_ROOT; };
+		D3B4C73C15EBA4DF0012F712 /* Icon-iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-iPad@2x.png"; path = "ArtWork/Icon-iPad@2x.png"; sourceTree = SOURCE_ROOT; };
+		D3B4C73D15EBA4DF0012F712 /* Icon-iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-iPhone.png"; path = "ArtWork/Icon-iPhone.png"; sourceTree = SOURCE_ROOT; };
+		D3B4C73E15EBA4DF0012F712 /* Icon-iPhone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-iPhone@2x.png"; path = "ArtWork/Icon-iPhone@2x.png"; sourceTree = SOURCE_ROOT; };
 		D3D3605115E47F49008B941A /* USGSURLMapData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = USGSURLMapData.plist; sourceTree = "<group>"; };
 		D3E420B115E41D97000C88B1 /* SeismicJSON.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeismicJSON.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3E420B515E41D97000C88B1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -143,6 +151,17 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		D3B4C73A15EBA4CF0012F712 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				D3B4C73B15EBA4DF0012F712 /* Icon-iPad.png */,
+				D3B4C73C15EBA4DF0012F712 /* Icon-iPad@2x.png */,
+				D3B4C73D15EBA4DF0012F712 /* Icon-iPhone.png */,
+				D3B4C73E15EBA4DF0012F712 /* Icon-iPhone@2x.png */,
+			);
+			name = Icons;
+			sourceTree = "<group>";
+		};
 		D3E420A615E41D97000C88B1 = {
 			isa = PBXGroup;
 			children = (
@@ -196,6 +215,7 @@
 		D3E420BE15E41D97000C88B1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D3B4C73A15EBA4CF0012F712 /* Icons */,
 				D3E420FC15E41EFE000C88B1 /* README.md */,
 				D3E420BF15E41D97000C88B1 /* SeismicJSON-Info.plist */,
 				D3E420C015E41D97000C88B1 /* InfoPlist.strings */,
@@ -369,6 +389,10 @@
 				D3E420FD15E41EFE000C88B1 /* README.md in Resources */,
 				D3D3605215E47F49008B941A /* USGSURLMapData.plist in Resources */,
 				D353B7C115E491EC00FF0E5D /* EarthquakeTableViewCell.xib in Resources */,
+				D3B4C73F15EBA4DF0012F712 /* Icon-iPad.png in Resources */,
+				D3B4C74015EBA4DF0012F712 /* Icon-iPad@2x.png in Resources */,
+				D3B4C74115EBA4DF0012F712 /* Icon-iPhone.png in Resources */,
+				D3B4C74215EBA4DF0012F712 /* Icon-iPhone@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
