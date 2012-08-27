@@ -22,10 +22,23 @@
     if (self.response.statusCode==200) {
         NSError *error=nil;
         NSString *filename = [self.urlToFetch lastPathComponent];
-        NSString *fullFilePath = [[[NetworkManager sharedManager] cachedImageDirectory] stringByAppendingPathComponent:filename];
+        NSString *cachedImageDirectory = [[NetworkManager sharedManager] cachedImageDirectory];
+        NSString *fullFilePath = [cachedImageDirectory stringByAppendingPathComponent:filename];
         NSLog(@"About to write file: %@",fullFilePath);
         if (![self.fetchedData writeToFile:fullFilePath options:NSDataWritingAtomic error:&error]) {
             NSLog(@"error occurred writing file: %@",[error localizedDescription]);
+            BOOL isDirectory=NO;
+            if (![[NSFileManager defaultManager] fileExistsAtPath:cachedImageDirectory isDirectory:&isDirectory]) {
+                NSError *error=nil;
+                if (![[NSFileManager defaultManager] createDirectoryAtPath:cachedImageDirectory withIntermediateDirectories:YES attributes:nil error:&error]) {
+                    NSLog(@"Error creating directory '%@':%@",cachedImageDirectory,[error localizedDescription]);
+                } else {
+                    if (![self.fetchedData writeToFile:fullFilePath options:NSDataWritingAtomic error:&error]) {
+                        NSLog(@"error occurred writing file again: %@",[error localizedDescription]);
+                    }
+                }
+            }
+
         }
         if (self.notificationTarget) {
             [self.notificationTarget imageDidBecomeAvailableAtPath:fullFilePath];

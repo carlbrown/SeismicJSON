@@ -161,13 +161,6 @@ static NetworkManager __strong *sharedManager = nil;
 -(NSString *) cachedImageDirectory {
     if (_cachedImageDirectory==nil) {
         _cachedImageDirectory = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"cachedImages"];
-        BOOL isDirectory=NO;
-        if (![[NSFileManager defaultManager] fileExistsAtPath:_cachedImageDirectory isDirectory:&isDirectory]) {
-            NSError *error=nil;
-            if (![[NSFileManager defaultManager] createDirectoryAtPath:_cachedImageDirectory withIntermediateDirectories:YES attributes:nil error:&error]) {
-                NSLog(@"Error creating directory '%@':%@",_cachedImageDirectory,[error localizedDescription]);
-            }
-        }
     }
     
     return _cachedImageDirectory;
