@@ -10,7 +10,9 @@
 
 @class Earthquake;
 
-@interface DetailViewController : UIViewController <UISplitViewControllerDelegate>
+@interface DetailViewController : UIViewController <UISplitViewControllerDelegate,UIScrollViewDelegate>
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
 
 @property (strong, nonatomic) Earthquake *detailItem;
 

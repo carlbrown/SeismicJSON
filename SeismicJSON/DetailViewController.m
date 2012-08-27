@@ -17,6 +17,8 @@
 @implementation DetailViewController
 
 #pragma mark - Managing the detail item
+@synthesize scrollView;
+@synthesize webView;
 @synthesize magnitudeLabel;
 @synthesize locationLabel;
 @synthesize latitudeLabel;
@@ -51,6 +53,8 @@
         [self.latitudeLabel setText:[NSString stringWithFormat:@"Latitude: %@",self.detailItem.latitude]];
         [self.longitudeLabel setText:[NSString stringWithFormat:@"Longitude: %@",self.detailItem.longitude]];
         [self.urlLabel setText:[NSString stringWithFormat:@"URL: %@",self.detailItem.webLinkToUSGS]];
+        NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:self.detailItem.webLinkToUSGS]];
+        [self.webView loadRequest:req];
     }
 }
 
@@ -101,6 +105,11 @@
     self.masterPopoverController = nil;
 }
 
+#pragma mark - ScrollView
+
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+    return self.webView;
+}
 - (void)viewDidUnload {
     [self setMagnitudeLabel:nil];
     [self setLocationLabel:nil];
@@ -108,6 +117,8 @@
     [self setLongitudeLabel:nil];
     [self setDateLabel:nil];
     [self setUrlLabel:nil];
+    [self setWebView:nil];
+    [self setScrollView:nil];
     [super viewDidUnload];
 }
 @end
