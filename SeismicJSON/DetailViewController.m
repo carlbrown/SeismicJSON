@@ -17,6 +17,7 @@
 @implementation DetailViewController
 
 #pragma mark - Managing the detail item
+@synthesize scrollView;
 @synthesize webView;
 @synthesize magnitudeLabel;
 @synthesize locationLabel;
@@ -104,6 +105,11 @@
     self.masterPopoverController = nil;
 }
 
+#pragma mark - ScrollView
+
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+    return self.webView;
+}
 - (void)viewDidUnload {
     [self setMagnitudeLabel:nil];
     [self setLocationLabel:nil];
@@ -112,6 +118,7 @@
     [self setDateLabel:nil];
     [self setUrlLabel:nil];
     [self setWebView:nil];
+    [self setScrollView:nil];
     [super viewDidUnload];
 }
 @end
