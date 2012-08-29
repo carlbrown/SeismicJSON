@@ -8,6 +8,7 @@
 
 #import "DetailViewController.h"
 #import "Earthquake.h"
+#import "NetworkManager.h"
 
 @interface DetailViewController ()
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
@@ -110,6 +111,23 @@
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
     return self.webView;
 }
+
+#pragma mark - WebView
+
+- (void)webViewDidStartLoad:(UIWebView *)webView {
+    [[NetworkManager sharedManager] incrementActiveFetches];
+    
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+    [[NetworkManager sharedManager] decrementActiveFetches];
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+    [[NetworkManager sharedManager] decrementActiveFetches];
+    [[NetworkManager sharedManager] fetchDidFailWithError:error];
+}
+
 - (void)viewDidUnload {
     [self setMagnitudeLabel:nil];
     [self setLocationLabel:nil];
