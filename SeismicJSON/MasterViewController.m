@@ -217,6 +217,7 @@
 	        self.detailViewController = [[DetailViewController alloc] initWithNibName:@"DetailViewController_iPhone" bundle:nil];
 	    }
         self.detailViewController.detailItem = (Earthquake *) object;
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
         [self.navigationController pushViewController:self.detailViewController animated:YES];
     } else {
         self.detailViewController.detailItem = (Earthquake *) object;
