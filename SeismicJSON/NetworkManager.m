@@ -12,6 +12,8 @@
 #import "ImageFetchOperation.h"
 #import "Reachability.h"
 
+#define kRESET_DATAFILE_EACH_RUN 1
+
 static NetworkManager __strong *sharedManager = nil;
 
 @interface NetworkManager ()
@@ -89,6 +91,18 @@ static NetworkManager __strong *sharedManager = nil;
 }
 
 -(void) startMainPageFetch {
+#ifdef kRESET_DATAFILE_EACH_RUN
+#if kRESET_DATAFILE_EACH_RUN
+
+    if ([[NSFileManager defaultManager] fileExistsAtPath:[[NetworkManager sharedManager] cachedImageDirectory]]) {
+        NSError *error=nil;
+        NSLog(@"Deleting %@",[[NetworkManager sharedManager] cachedImageDirectory]);
+        [[NSFileManager defaultManager] removeItemAtPath:[[NetworkManager sharedManager] cachedImageDirectory] error:&error];
+        NSLog(@"Deleted %@",[[NetworkManager sharedManager] cachedImageDirectory]);
+    }
+#endif
+#endif
+    
     [self setHostReach:[Reachability reachabilityWithHostName:[self.baseURL host]]];
     [self.hostReach startNotifier];
 
