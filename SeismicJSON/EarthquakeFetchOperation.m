@@ -90,7 +90,8 @@
                 }
                 
                 NSString *eventLocation = [eventDict valueForKeyPath:@"properties.place"];
-                NSDate *eventDate = [NSDate dateWithTimeIntervalSince1970:[[eventDict valueForKeyPath:@"properties.time"] doubleValue]];
+                // JSON date format in milliseconds instead of seconds, so divide by 1000
+                NSDate *eventDate = [NSDate dateWithTimeIntervalSince1970:([[eventDict valueForKeyPath:@"properties.time"] doubleValue]/1000.0f)];
                 NSNumber *eventMagnitude = [NSNumber numberWithFloat:[[eventDict valueForKeyPath:@"properties.mag"] floatValue]];
                 NSString *eventWebPath = [@"http://earthquake.usgs.gov" stringByAppendingPathComponent:[eventDict valueForKeyPath:@"properties.url"]];
                 
