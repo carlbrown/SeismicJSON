@@ -119,7 +119,9 @@ static NetworkManager __strong *sharedManager = nil;
 -(NSArray *) availableTimeFrames {
     if (!self.isNetworkOnline) {
         UIAlertView *networkAlertView = [[UIAlertView alloc] initWithTitle:@"Network Offline" message:@"Cannot talk to network" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
-        [networkAlertView show];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [networkAlertView show];
+        });
 
         return nil;
     }
@@ -129,7 +131,9 @@ static NetworkManager __strong *sharedManager = nil;
 -(NSArray *) significanceFiltersForTimeFrame:(NSString *) timeFrame {
     if (!self.isNetworkOnline) {
         UIAlertView *networkAlertView = [[UIAlertView alloc] initWithTitle:@"Network Offline" message:@"Cannot talk to network" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
-        [networkAlertView show];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [networkAlertView show];
+        });
         
         return nil;
     }
@@ -139,7 +143,9 @@ static NetworkManager __strong *sharedManager = nil;
 -(NSString *) relativeJSONURLForTimeFrame:(NSString *)timeFrame andSignificance:(NSString *) significance {
     if (!self.isNetworkOnline) {
         UIAlertView *networkAlertView = [[UIAlertView alloc] initWithTitle:@"Network Offline" message:@"Cannot talk to network" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
-        [networkAlertView show];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [networkAlertView show];
+        });
         
         return nil;
     }
@@ -150,7 +156,9 @@ static NetworkManager __strong *sharedManager = nil;
     //Don't give the user an error if the network is already offline
     if (self.isNetworkOnline) {
         UIAlertView *networkAlertView = [[UIAlertView alloc] initWithTitle:[error localizedDescription] message:[[error userInfo] description] delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
-        [networkAlertView show];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [networkAlertView show];
+        });
         [self setNetworkOnline:NO];
     }
     
